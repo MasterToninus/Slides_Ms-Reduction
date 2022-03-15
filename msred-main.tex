@@ -11,7 +11,7 @@
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
 	\newif\ifHandout
-	\Handouttrue  %uncomment for the printable version
+	%\Handouttrue  %uncomment for the printable version
 	%Handling of flags it is not preserved when passing to standalone-subfiles!
 
 
@@ -44,9 +44,8 @@
   }
 
 
-
 %- T1tle P4g3 -------------------------------------------------------------------------------------------
-\title{ Multisymplectic geometry, \\ momentum maps and reduction} 
+\title{ Symmetries and Reduction \\ of Multisymplectic Manifolds } 
 \subtitle{\href{https://www.mpim-bonn.mpg.de/node/158}{MPI-Oberseminar}}
 \author[AMM]{\href{https://dmf.unicatt.it/miti/}{Antonio Michele Miti}}
 %\institute[UCSC and KU Leuven]{
@@ -129,7 +128,18 @@
 	%\tableofcontents
 	\textbf{Abstract:}
 	\\
-    ...
+    Multisymplectic manifolds are a straightforward generalization of symplectic manifolds where closed non-degenerate k-forms are considered in place of 2-forms.
+A natural theme that arises when dealing with (multi)symplectic structures is investigating the relationship between symmetries (group action preserving the fixed differential form) and reduction.
+
+A well-known result in symplectic geometry, known as Marsden–Weinstein–Meyer symplectic reduction theorem, states that (MW ...)
+
+Such a result can be extended in a purely algebraic setting to the case of a singular moment map according to the so-called Sniaticki-Weinstein reduction scheme.
+
+
+The scope of this talk is to review some relevant algebraic structures related to multisymplectic manifolds, namely the higher version of the observables algebra and moment maps, and discuss how the regular and singular reduction schemes extend to the multisymplectic framework.
+
+This talk is based on ongoing joint work with Casey Blacker and Leonid Ryvkin.
+
 }
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -140,26 +150,26 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Introduction}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\input{Ms-Reduction-intro}
+	\input{msred-intro}
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Multisymplectic Geometry}
 \checkpoint	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\input{Ms-Reduction-geometry}
+	\input{msred-geometry}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Momentum maps and regular reduction}
 \checkpoint	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\input{Ms-Reduction-regular-reduction}
+	\input{msred-regular}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Homotopy comomentum maps and singular reduction}
 \checkpoint	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\input{Ms-Reduction-singular-reduction}
+	\input{msred-singular}
 
 
 
@@ -175,8 +185,8 @@
 \appendix
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Complementary Material}
-	\input{template-complementary-material}
-	\input{template-aknowledgements}
+	\input{msred-appendix}
+	\input{msred-aknowledgements}
 %------------------------------------------------------------------------------------------------
 
 

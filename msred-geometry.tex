@@ -1,0 +1,403 @@
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
+
+%- D0cum3nt ----------------------------------------------------------------------------------------------
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+
+\ifHandout
+	\setbeameroption{show notes} %print notes   
+\fi
+
+	
+%- Packages ----------------------------------------------------------------------------------------------
+\usepackage{custom-style}
+\usetikzlibrary{positioning}
+\usepackage{multicol}
+\usepackage{bbold}
+
+%--Beamer Style-----------------------------------------------------------------------------------------------
+\usetheme{toninus}
+\usepackage{animate}
+\usetikzlibrary{positioning, arrows}
+\usetikzlibrary{shapes}
+
+
+%============================================================================================================
+\begin{document}
+%============================================================================================================
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Multisymplectic manifolds}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile]{Multisymplectic manifolds} %Fragile -->workaround tikzcd
+	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)}]
+		\includestandalone[width=0.95\textwidth]{Pictures/Figure_multisym}	
+	\end{defblock}
+	%
+	\begin{defblock}[Non-degenerate $(n+1)$-form]
+		\begin{columns}
+			\begin{column}{.45\linewidth}
+				\centering{
+				The $\omega^\flat$ (flat) bundle map is injective.
+				}
+			\end{column}
+			\begin{column}{.5\linewidth}
+						\vspace{-.5em}
+				\[
+				\begin{tikzcd}[column sep= small,row sep=0ex,
+				/tikz/column 1/.append style={anchor=base east}]
+				    \omega^\flat \colon T M \ar[r]& \Lambda^n T^\ast M \\
+  						 (x,u) \ar[r, mapsto]& (x,\iota_{u} \omega_x)						
+				\end{tikzcd}	
+				\]
+			\end{column}
+		\end{columns}
+	\end{defblock}
+	%
+	\vfill
+	%
+	\begin{block}{Examples:}
+		\vspace{-.5em}
+		\setbeamercovered{transparent}
+		\begin{itemize}[<+->]
+			\item[$\bullet$] $n=1$ \qquad\qquad\qquad $\Rightarrow$\quad $\omega$ is a symplectic form
+			\item[$\bullet$]  $n=(dim(M)-1)$ \quad$\Rightarrow$\quad $\omega$ is a volume form
+			%Any oriented $(n+1)$-dimensional manifold is $n$-plectic w.r.t. the volume form.
+			%\item[$\bullet$] Let $G$ a semisimple Lie group and $\langle\cdot,\cdot \rangle$  its killing form. Then $\langle [\cdot,\cdot],\cdot \rangle$ extends to a biinvariant multisymplectic form $\omega$.
+			\item[$\bullet$] Let $Q$ a smooth manifold, the multicotangent bundle $\Lambda^n T^\ast Q$ is naturally $n$-plectic.%
+			\quad
+			\textit{(cfr, \href{https://arxiv.org/abs/physics/9801019}{GIMMSY} construction for classical field theories)}
+		\end{itemize}
+	\end{block}			 
+	
+%
+\end{frame}
+\note[itemize]{
+	\item Multisymplectic ($n$-plectic) geometry is a generalization of symplectic geometry where a closed, non degenerate $n+1$-form $(n\geq 1)$  takes the place of the symplectic 2-form
+	
+	\item multisymplectic means \emph{going higher} in the degree of $\omega$
+	
+	\item non degeneracy means $\iota_v\omega = 0 \Leftrightarrow v=0$.
+	
+	\item examples: 
+	\\1-plectic $=$ symplectic, 
+	\\any oriented $(n+1)$-dimensional manifold is $n$-plectic w.r.t. the volume form
+	\\the multicotangent bundle $\Lambda^n T^\ast Q$ is naturally $n$-plectic (see frame extra-\ref{Frame:Ms-Field-Mechanics})
+	
+	\item Observe also that, by degree reason, when $n$ is equal to $1$ or $dim(M)+1$ an injective flat map $\flat$ is also bijective.
+	
+	\item It is important to stress that mechanical systems are not the only source instances of this class of of structures. 
+				e.g. any semisimple Lie groups has associated a 2-plectic structure and any oriented $n+1$ dimensional manifold is naturally $n$-plectic.
+				
+
+}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}[t]{Special classes of smooth objects}\label{Frame:Classes-Multisymplectic-Objects}
+	\vspace{-1.5em}
+  	\begin{columns}
+		\begin{column}[t]{.42\linewidth}		
+			\begin{defblock}[Hamiltonian v.f.]
+				$\mathfrak{X}_{ham} =  \left\lbrace X \in  \mathfrak{X} \right\vert \left. \iota_x \omega \textrm{ exact}  \right\rbrace$ 			
+			\end{defblock}
+			\begin{defblock}[Multisymplectic v.f.]
+				$\mathfrak{X}_{ms} =  \left\lbrace X \in  \mathfrak{X} \right\vert \left. \mathcal{L}_X \omega = 0  \right\rbrace$ 	
+			\end{defblock}
+		\end{column}
+		\begin{column}[t]{.58\linewidth}		
+			\begin{defblock}[Hamiltonian $(n$-$1)-$forms]
+				\begin{displaymath}
+					\Omega^{n-1}_{ham} 	:=
+					\biggr\{ H \in  \Omega^{n-1} \; \left\vert \; 
+					\stackanchor{$\exists X \in \mathfrak{X}_{ham}$}{: $d H = -\iota_X \omega$} \right\} 
+			\end{displaymath}
+			\end{defblock}		
+		\end{column}
+  	\end{columns}
+  	%
+  	\vfill
+  	%
+  	\onslide<2->{
+  	\begin{columns}
+		\begin{column}[t]{.5\linewidth}	
+			\centering\emph{Global symmetries}
+			\begin{defblock}[Multisym. (Lie group) action]
+				Smooth action $\Phi: G \curvearrowright (M, \omega)$ s.t. 
+				$$(\Phi_g)_\ast \omega = \omega \qquad \forall g \in G~.$$
+			\end{defblock}
+		\end{column}
+		\begin{column}[t]{.5\linewidth}			
+			\centering\emph{Infinitesimal symmetries}
+			\begin{defblock}[Multisym. (Lie algebra) action]
+				Lie algebra hom.
+				$\vAct: \mathfrak{g} \rightarrow \mathfrak{X} (M)$  s.t.
+				$$\mathcal{L}_{\vAct_\xi} \omega = 0 \qquad \forall \xi \in \mathfrak{g}~.$$	
+			\end{defblock}
+		\end{column}
+  	\end{columns}
+  	}
+  	%
+  	\vfill
+  	\onslide<3->{		
+	  	\begin{asideblock}[Hierarchy of conserved quantities]%Shades of...
+	  		\begin{table}[] % http://tablesgenerator.com/
+			\begin{tabular}{lllll}
+					& strictly conserved & & & $\mathcal{L}_X \alpha= 0$ \\
+				$\alpha \in \Omega^\bullet$ & globally conserved & along $X \in \mathfrak{X}$ & $\Leftrightarrow$ & $\mathcal{L}_X \alpha\in B $ (exact) \\
+				  & locally conserved  & & & $\mathcal{L}_X \alpha\in Z $ (closed)                                
+			\end{tabular}
+			\end{table}
+	  	\end{asideblock}
+  	}
+  	
+  \end{frame}
+  \note[itemize]{
+  	\item Exactly as it happens in symplectic geometry, fixing a smooth form $\omega$ on $M$ yields a criterion for classifying vector fields and differential forms.
+  	\\(Pay attention to the sign convention in defining the Hamiltonian vector fields)
+	\item We recognize the special class of forms, called Hamiltonian, determining the Hamiltonian vector fields. 
+	Not every $n-1$ form admits an Hamiltonian vector field.
+	When it exists, non degeneracy guarantees unicity.  	
+  	\item Also, we can naturally select a special class of symmetries (global and infinitesimal) which preserve the fixed multisymplectic form.
+  	\item Aside, we can start to see that, in this setting, measurable quantities are not only smooth functions but also differential forms with degree greater then zero.
+  	For such objects can be defined weaker notions of conservation along a flow.
+  	\item The idea to consider forms of various degree as observables do not fall out of the sky. 
+  		For instance in a string there will be two kind of measurable quantities: extensive observable (1-forms), like the density, and intensive observables (0-forms), like the tension. 
+ 		%\href{https://en.wikipedia.org/wiki/Intensive_and_extensive_properties#Intensive_properties}{(wiki link on this terminology)}
+  	\item Starting from this observation we can define the space of all possible observables (see next slide).
+  }
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Observability}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Observables in $n$-plectic geometry}
+	%
+	\begin{defblock}[Hamiltonian $(n-1)$-forms]
+		\begin{displaymath}
+			\Omega^{n-1}_{ham}(M,\omega) 	:=
+			\biggr\{ \sigma \in  \Omega^{n-1}(M) \; \biggr\vert \; 
+				\exists \vHam_\sigma \in \mathfrak{X}(M) ~:~ 
+				\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=orange!5,draw=orange!30,anchor=base]            
+            			(target) {$d \sigma = -\iota_{\vHam_\sigma} \omega$ };
+            	}				
+				~\biggr\} 
+			\end{displaymath}
+	\end{defblock}
+
+	\pause
+		\tikz[overlay,remember picture]
+		{
+			\node[rounded corners,
+                 fill=orange!5,draw=orange!30,anchor=base]
+            	 (base) at ($(current page.north east)-(2,1)$) [rotate=-0,text width=3.5cm,align=center] {\footnotesize{\textcolor{red}{Hamilton-DeDonder-Weyl \\equation}}};
+		}	
+	\begin{tikzpicture}[overlay,remember picture]
+    	\path[->] (base.south) edge[bend right,red](target.north);
+    \end{tikzpicture}
+	%
+	\vspace{-1em}
+	\begin{columns}[T]
+		\pause
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\begin{thmblock}[Observables $L_\infty$-algebra]
+				$\Omega^{n-1}_{ham}(M,\omega)$ endowed with
+				\vspace{-.5em}
+				\begin{displaymath}
+					\lbrace \sigma_1, \sigma_2 \rbrace =			
+					~ - \iota_{\vHam_1}\iota_{\vHam_2} \omega 
+				\end{displaymath}			
+				can be "completed" to a \\ $L_\infty-algebra$.
+			\end{thmblock}
+			%
+			\pause
+			\begin{itemize}
+				\item[\cmark] Skew-symmetric;
+				\item[\xmark] multiplication of observables;
+				\item[\xmark] Jacobi equation;
+				%\\ \hspace*{4.25em} full-fledged Jacobi equation;
+				\item[\smark] Jacobi equation \emph{up to homotopies}.
+			\end{itemize}				
+		\end{column}	
+		%
+		\onslide<1->{\vrule{}}
+		%
+		\pause
+		\begin{column}{.50\linewidth}
+			\begin{thmblock}[Observables Leibniz algebra]
+				$\Omega^{n-1}_{ham}(M,\omega)$ endowed with
+				\vspace{-.5em}
+			\begin{displaymath}
+				\llbracket \sigma_1, \sigma_2 \rrbracket =
+				~ \mathcal{L}_{\vHam_1} \sigma_2
+				~.					
+			\end{displaymath}		
+				can be "completed" to a \\ DG-Leibniz algebra.
+			\end{thmblock}	
+			%
+			\pause
+			\begin{itemize}
+				\item[\xmark] Skew-symmetric;
+				\item[\xmark] multiplication of observables;
+				\item[\cmark] Jacobi equation;
+				\item[\smark] Skew-symmetric \emph{up to homotopies}.
+			\end{itemize}	
+		\end{column}	
+	\end{columns}
+\end{frame}
+\note[itemize]{
+ \item See \cite[\S 7.2]{Rogers2010} about the comparison of these two algebraic structures.
+ \item Notice that the failure of skew-symmetricity is measured by
+ \begin{align*}
+ 	A(\sigma_1,\sigma_2) 
+ 	=&~
+ 	 2~\llbracket \sigma_1, \sigma_2\rrbracket +  \llbracket \sigma_2, \sigma_1\rrbracket
+ 	 \\
+ 	 =&~ d \circ\langle\sigma_1,\sigma_2\rangle_+
+ \end{align*}
+ (Compare with the \href{https://en.wikipedia.org/wiki/Courant_bracket\#Dorfman_bracket}{Dorfmann bracket}.)
+ 
+ \item Notice that the antisymmetrization of $\llbracket \cdot, \cdot \rrbracket$ equates $\lbrace \cdot,\cdot \rbrace$ modulo homotopy:
+ \begin{align*}
+  \llbracket \sigma_1,\sigma_2 \rrbracket  \circ 	\mathcal{A}
+  =&~
+  \frac{\mathcal{L}_{\vHam_1}\sigma_2 - \mathcal{L}_{\vHam_2}\sigma_1}{2} 
+  \\
+  =&~ 
+  \frac{1}{2}( d (\iota_{\vHam_1}{\sigma_2} - \iota_{\vHam_2}{\sigma_1} )
+  +\frac{1}{2}(-\iota_{\vHam_1}\iota_{\vHam_2}\omega + \iota_{\vHam_2}\iota_{\vHam_1}\omega) 
+  \\
+  =&~
+  \lbrace \sigma_1, \sigma_2 \rbrace + d \circ \langle\sigma_1,\sigma_2\rangle_-
+  \\
+  =&~
+  [\sigma_1,\sigma_2]_\omega
+ \end{align*}
+ where the last bracket is given by the Higher Courant bracket.
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{$L_\infty$-algebra of Observables}
+\begin{frame}[fragile,t]{$L_\infty$-algebra of Observables (higher observables) }
+	Let be $(M,\omega)$ a $n$-plectic manifold.
+	\begin{defblock}[$L_\infty$-algebra of observables ~\emph{(Rogers)}]
+		\hspace{.25em} Is a cochain-complex $(L,\{\cdot\}_1)$ \\
+		\vspace{-2.5em}
+		\begin{center}
+		\ifHandout
+			\includestandalone{Pictures/Figure_Observables}	
+		\else
+			\includestandalone{Pictures/Frame_Observables}
+		\fi				
+		\end{center}
+		\onslide<2->{
+			\hspace{.25em} with $n$ (skew-symmetric) multibrackets $(2 \leq k \leq n+1)$\\
+			\vspace{-1.5em}
+			\begin{center}
+				\includestandalone{Pictures/Equation_Multibracket}	
+			\end{center}
+		}
+		%
+	\end{defblock}
+  \end{frame}
+ \note[itemize]{
+	\item if symplectic manifolds are the symmetric take on mechanics, Poisson algebras are the algebraic counterpart.
+ 	\item A Lie algebra is associated to an ordinary symplectic manifold (its Poisson algebra).
+	%(Underlying this is a Lie algebra, whose Lie bracket is the Poisson bracket.)
+	Similarly, one associates an Lie-$n$ algebra to any $n$-plectic manifold.
+ 	% https://ncatlab.org/nlab/show/n-plectic+geometry 	 
+ 	 %https://ncatlab.org/nlab/show/Poisson+bracket+Lie+n-algebra
+	 \item Basically, the higher observables algebra is a chunk of the de Rham complex of $M$ with inverted grading( convention employed here) and an extra structure called "multibrackets".
+ 	\item ( In the 1-plectic case it reduces to the corresponding Poisson algebra of classical observables)
+ 	\item Rogers associated to any n-plectic mfd a $L\-\infty$ algebra, Zambon generalized it to the pre-n-plectic case.
+ 	\item Recognize in the definition of $\{\cdot,\ldots,\cdot\}_k$ the contraction with hamiltonian fields $v_\sigma$ w.r.t. $\sigma$.
+  	\item Note $	\iota_{v_{\sigma_1}}\cdots\iota_{v_{\sigma_k}} = (-)^{(k-1)+(k-2)+\dots+1}\iota_{v_{\sigma_k}}\cdots\iota_{v_{\sigma_1}} = (-)^{\frac{k(k-1)}{2}}\iota_{v_{\sigma_k}}\cdots\iota_{v_{\sigma_1}}$ 
+ 	The definition usually find in literature of Rogers multibrackets involves the coefficient $ (-)^{\frac{k(k-1)}{2}} = -\varsigma(k-1) = (-)^{k+1} \varsigma(k)$.
+  \item higher observables is Special instance of a more general object  called $L\-\infty$ Algebra...
+ }
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Reminder: $L_\infty$ Algebras}
+
+		\emph{
+			$L_\infty$-algebra is the notion that one obtains from a Lie algebra when one requires the Jacobi identity to be satisfied only up to a higher coherent chain homotopy.
+		}
+		\\
+		\vspace{.5em}
+		\begin{defblock}[$L_\infty$-algebra \emph{(Lada, Stasheff)}]
+			\includestandalone{Pictures/Figure_Linfinitydef}
+		\end{defblock}	
+		%
+		%
+	\pause
+	\vfill
+	\begin{thmblock}[Rogers \cite{Rogers2010}]
+		The \emph{higher observable algebra} $L_{\infty}(M,\omega)$ 	forms an honest $L_\infty$ algebra.
+		\footnotetext{ Take $\mu_1 = \text{d}$, $L$ is a shifted truncation of the de Rham complex.}
+	\end{thmblock}
+\end{frame}
+\note[itemize]{
+	\item $L_\infty$-algebra is the notion obtained from a Lie algebra requiring that the Jacobi identity is satisfied only up to a higher coherent chain homotopy.
+	\item The Lie-n algebra mentioned before is a $L_\infty$ algebra with underlying graded vector space concentrated in degrees $0,1...n$.
+	
+	\item Definition. We say that a permutation $\sigma \in S_n$ is a $(j,n-j)$-unshuffle, $0\leq j \le1 n$  if $\sigma(1)< \dots < \sigma(j)$ and $\sigma(j+1)<\dots<\sigma(n)$.
+	\\
+	You can also say that $\sigma$ is a $(j,n-j)$-unshuffle if $\sigma(i)< \sigma(i+1)$ when $i\neq j$.
+
+	\item 	Alternatively, the Jacobiators can be also denoted as $$\displaystyle J_m=\sum_{i+j=m+1} 	\mu_i \circ \mu_j = 0$$
+	employing the so-called \emph{ Richardson-Nijenhuis product}
+		 $$\mu_i\circ \mu_j := (-)^{i(j+1)}\frac{1}{j!(i-1)!}\mu_i\circ\mu_j\otimes \mathbb{1}_{i-1} \circ \mathcal{A}~,$$
+		 where $\mathcal{A}$ denotes the (graded) total skew-symmetrizator.
+		 
+	\item see frame extra-\ref{Frame:unwapping-Jacobi} for a slightly demystification of the higher Jacobi equations.
+
+	\item more precisely this statement is a proposition/definition
+
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Leibniz-algebra of Observables}
+\begin{frame}[fragile,t]{Leibniz-algebra of Observables}
+
+
+\end{frame}
+\note[itemize]{
+	\item
+}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+
+%============================================================================================================
+\end{document}
+%============================================================================================================
