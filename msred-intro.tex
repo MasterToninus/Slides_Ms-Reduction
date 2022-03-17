@@ -31,208 +31,90 @@
 \begin{document}
 % ==========================================================================================
 
-
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[fragile]{Multisymplectic geometry in a nutshell}
-	\begin{block}{Historical motivation}
-		Mechanics: geometrical foundations of \textit{(first-order)} field theories.
-	\end{block}
-	\vfill	
-	\begin{table}
-		\only<2>{
-		\begin{tabular}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.35\textwidth}|} 
-            \hline
-            \parbox[][20pt][c]{0.2\textwidth}{mechanics} & \multicolumn{2}{c|}{geometry} \\
-            \hline
-            \parbox[][20pt][c]{0.2\textwidth}{phase space} & symplectic manifold &  \\[.25em]
-            \parbox[][20pt][c]{0.2\textwidth}{classical \\ observables} & Poisson algebra &  \\[.25em]
-            \parbox[][20pt][c]{0.2\textwidth}{symmetries} &  group actions admitting comoment map &  
-            \\
-            \hline
-  \multicolumn{1}{c}{}
-            &  \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{point-like particles systems}}$} 
-            &  \multicolumn{1}{@{}c@{}}{}              \\
-		\end{tabular}
-		
-		
+\begin{frame}[fragile]{Keywords}
+\tikzstyle{every picture}+=[remember picture]
+	\begin{columns}
+    	\begin{column}{.45\textwidth}
+    		\onslide<3->{
+			\tikz[baseline]{
+		            \node[draw=orange!40,anchor=base,text width=5cm] (s1)
+		            {Group of transformations preserving the prescribed geometric structures.};
+			}
 		}
-		\onslide<3->{
-		\begin{tabular}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.35\textwidth}|} 
-            \hline
-            \parbox[][20pt][c]{0.2\textwidth}{mechanics} & \multicolumn{2}{c|}{geometry} \\
-            \hline
-            \parbox[][20pt][c]{0.2\textwidth}{phase space} & symplectic manifold & multisymplectic manifold \\[.25em]
-            \parbox[][20pt][c]{0.2\textwidth}{classical \\ observables} & Poisson algebra & $L_\infty$-algebra \\[.25em]
-            \parbox[][20pt][c]{0.2\textwidth}{symmetries} &  group actions admitting comoment map & group actions admitting 
-			\tikz[baseline,remember picture]{\node[rounded corners,
-                        fill=orange!10,draw=orange!30,anchor=base]            
-            			(target) {homotopy comomentum map};
-            }
-            \\
-            \hline
-  \multicolumn{1}{c}{}
-            &  \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{point-like particles systems}}$} 
-            &
-            \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{field-theoretic systems}}$} 
-               \\
-		\end{tabular}
+	\end{column}
+    	\begin{column}{.45\textwidth}
+    		\onslide<4->{
+			 \tikz[baseline]{
+		            \node[draw=blue!40,anchor=base, text width=5cm] (s2)
+		            {Procedure providing another manifold of reduced dimension encoding the relevant geometrical information.};
+			}
 		}
-	\end{table}		
+	\end{column}
+	\end{columns}
+
 	\vfill
-	\onslide<4->{
-	
-	\begin{block}{Scope of the thesis}
-		\begin{itemize}
-			\item[$\bullet$] Develop theory of 
-				\tikz[baseline,remember picture]{\node[rounded corners,
-                        fill=orange!10,draw=orange!30,anchor=base]            
-            			(base) {homotopy comomentum maps};
-            	}
-            \item[$\bullet$] produce new meaningful examples.
-		\end{itemize}
-	\end{block}
 
+	\begin{center}
+		\large
+		 \tikz[baseline]{
+		            \node[fill=orange!20,anchor=base] (t1)
+		            {Symmetries};
+			}
+		 and
+		 \tikz[baseline]{
+		            \node[fill=blue!20,anchor=base] (t2)
+		            {Reduction};
+		        } 
+		\\
+		of 
+		 \tikz[baseline]{
+	            \node[fill=green!20,anchor=base] (t3)
+	            {Multi};
+		}
+		\kern-3pt - \kern-3pt
+		 \tikz[baseline]{
+	            \node[fill=red!20,anchor=base] (t4)
+	            {Symplectic};
+		}		
+        manifolds
+	\end{center}
 
-                    \begin{tikzpicture}[overlay,remember picture]
-                    \path[->]<4-> (base.north east) edge[bend right](target.south east);
-                    \end{tikzpicture}
-	}
+	\vfill
 
+	\begin{columns}
+    	\begin{column}{.45\textwidth}
+    		\onslide<2->{
+	 		 \tikz[baseline]{
+	            \node[draw=green!40,anchor=base,text width=5cm] (s3)
+	            {A certain higher version \\(involving differential forms in degree $\geq 2$)};
+	         }
+		}		   	
+		\end{column}
+    	\begin{column}{.45\textwidth}
+		\tikz[baseline]{
+	            \node[draw=red!40,anchor=base,text width=5cm] (s4)
+	            {Geometric structure providing a prescription on how to measure the area of 2-dimensional surface elements embedded in the manifold.};
+		}	
+		\end{column}
+	\end{columns}
+
+	\begin{tikzpicture}[overlay]
+        \path[->,draw=orange!40]<3-> (s1) edge [bend right] (t1);
+        \path[->,draw=blue!40]<4-> (s2) edge [bend left] (t2);
+        \path[->,draw=green!40]<2-> (s3) edge [bend left] (t3);
+        \path[->,draw=red!40] (s4) edge [bend right] (t4);
+	\end{tikzpicture}
 
 \end{frame}
 \note[itemize]{
-	\item Historically, the interest in multisymplectic manifolds, has been motivated by the need for understanding the geometrical foundations of first-order classical field theories.
-	The key point is that, just as one can associate a symplectic manifold to an ordinary classical mechanical system (e.g. a single
-point-like particle constrained to some manifold), it is possible to associate a multisymplectic
-manifold to any classical field system (e.g. a continuous medium like a filament or a fluid). See frame Extra-\ref{Frame:Ms-Field-Mechanics} 
-	
-	\item General ideas basic parallelisms with caveats
-	\item caveat: points in multiphase spaces are not states
-	\item the table hides the duality between geometric and algebraic approaches to the problem.
-	\item 
+	\item Provide a vague idea of the words that make up the title.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-
-
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[t, fragile]{Research Framework:  \textbf{multisymplectic geometry}} %Fragile -->workaround tikzcd
-	\begin{center}
-		$-$ \emph{multisymplectic means \textbf{going higher} in the degree of $\omega$} $-$
-	\end{center}
-	\pause
-	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)} \cite{Cantrun2017}]
-		\includestandalone[width=0.95\textwidth]{Pictures/Figure_multisym}	
-	\end{defblock}
-	%
-	\vfill
-	%
-	%
-	\pause
-	\begin{block}{Examples:}
-		\begin{itemize}
-			\item[$\bullet$] 1-plectic $=$ symplectic
-			\item[$\bullet$] Any oriented $(n+1)$-dimensional manifold is $n$-plectic w.r.t. the volume form.
-			\item[$\bullet$] The multicotangent bundle $\Lambda^n T^\ast Q$ is naturally $n$-plectic.
-		\end{itemize}
-	\end{block}			 
-%
-	\pause
-	\begin{block}{Historical motivation}
-		Mechanics: geometrical foundations of \textit{(first-order)} field theories.
-		\begin{itemize}
-		 \item[•] Kijowski, W. Tulczyjew \cite{Kijowski1979}; %(1979)
-		 \item[•] Cariñena, Crampin, Ibort \cite{Carinena1991b};% (1991)
-		 \item[•] Gotay, Isenberg, Marsden, Montgomery \cite{Gimmsy1};%(1998)
-		 \\ $\cdots$
-		\end{itemize}
-	\end{block}
-\end{frame}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[t]{Symmetries in \textbf{multisymplectic geometry}}
-	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  preserving the $n$-plectic form $\omega$,
-	\vfill
-
-	\vspace{-1em}
-	\begin{columns}[T]
-		\setlength{\belowdisplayskip}{5pt}
-		\begin{column}{.50\linewidth}
-			%
-			\centering \it
-			\onslide<2->{
-				$-$ symplectic case $-$
-				\begin{defblock}[Comoment map pertaining to $v$]
-					Lie algebra morphism
-					$$ f: \mathfrak{g} \to C^\infty(M) $$
-					such that
-					$$ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
-				\end{defblock}
-			}
-		\end{column}	
-		%
-		\onslide<2->{\vrule{}}
-		%
-		\begin{column}{.50\linewidth}
-			\centering \it
-			\onslide<3->{			
-				$-$ $n$-plectic case $-$
-				\begin{defblock}[Homotopy comoment map \tiny (HCMM)]
-					$L_\infty$-morphism 
-					$$ (f_k) : \mathfrak{g} \to L_\infty (M,\omega)$$
-					such that
-					$$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
-				\end{defblock}	
-			}
-		\end{column}	
-	\end{columns}	
-	%
-	\pause
-	\vfill
-	\centering 
-	\onslide<4->{\textbf{-- Conserved quantities --}}
-	%
-	\vspace{-.5em}
-	\begin{columns}[T]
-		\setlength{\belowdisplayskip}{5pt}
-		\begin{column}{.50\linewidth}
-			%
-			\centering \it
-			\onslide<4->{
-			\begin{propblock}[Noether Theorem]
-				\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
-				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
-			\end{propblock}
-			}
-		\end{column}	
-		%
-		\onslide<5->{\vrule{}}
-		%
-		\begin{column}{.50\linewidth}
-			\centering \it
-			\onslide<5->{			
-			\begin{propblock}[RWZ16 Theorem]
-				\small Fixed $H\in \Omega^{n-1}_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant),
-				$$\mathcal{L}_{v_H} f_k(p) \in B^k(M) \qquad \forall p \in Z_k(\mathfrak{g})$$			
-			\end{propblock}
-			}
-		\end{column}	
-	\end{columns}		
-\end{frame}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Symplectic geometry (mechanical perspective)}
+\begin{frame}{Symplectic geometry (mechanics flavour)}
 \begin{columns}[T]
 	\begin{column}{.50\linewidth}
 		\centering
@@ -265,7 +147,7 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 		\pause
 		\vspace{1em}
 		\centering
-		\textit{ based on the notion of "states".}		
+		\textit{ based on the notion of \\"states".}		
 	\end{column}
 	\onslide<1->{\vrule{}}
 	\pause
@@ -293,7 +175,7 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 		\pause
 		\vspace{.8em}
 		\centering
-		\textit{ based on the notion of "meaurable quantities".}						
+		\textit{ based on the notion of \\"meaurable quantities".}						
 	\end{column}
 \end{columns}
 \end{frame}
@@ -322,73 +204,66 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[t]{From Symplectic to MultiSymplectic (mechanical perspective)}
+\begin{frame}{From symplectic to {multi}symplectic} 
+	%
+	\begin{center}
+		$-$ \emph{multisymplectic means \textbf{going higher} in the degree of $\omega$} $-$
+	\end{center}
+	\pause
+	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)} \cite{Cantrun2017}]
+		\includestandalone[width=0.95\textwidth]{Pictures/Figure_multisym}	
+	\end{defblock}
+	%
+	\pause
+		\begin{table}
+			\begin{tabular}{c c c}
+				symplectic forms \small($n=1$) & $\leftrightsquigarrow$ & volume forms \small($n= \text{dim}(M)-1$)
+			\end{tabular}
+		\end{table}
+
+	\vfill
+	\pause
 	\begin{block}{Historical motivation}
 		Mechanics: geometrical foundations of \textit{(first-order)} field theories.
-		\begin{itemize}
-		 \item[•] Kijowski, W. Tulczyjew \cite{Kijowski1979}; %(1979)
-		 \item[•] Cariñena, Crampin, Ibort \cite{Carinena1991b};% (1991)
-		 \item[•] Gotay, Isenberg, Marsden, Montgomery \cite{Gimmsy1};%(1998)
-		 \\ $\cdots$
-		\end{itemize}
 	\end{block}
-	\vfill
-	\pause
-	\tcbset{colback=white,
-		colbacktitle=white,
-		colframe=red!70!black,
-		boxrule=1pt,
-		colupper=red!70!black,
-		arc=15pt}
-	\begin{tcolorbox}[enhanced,frame hidden,borderline={0.5pt}{0pt}{red,dashed}]
-		\color{red}
-		\begin{columns}[T]
-			\begin{column}{.20\linewidth}
-				\begin{center}
-					\huge
-					\faWarning
-				\end{center}
-			\end{column}			
-			\begin{column}{.60\linewidth}
-				\vspace{-.4em}
-				\begin{center}
-					The lack of a satisfactory notion of observables hindered the spread of this formalism.
-				\end{center}
-			\end{column}			
-			\begin{column}{.20\linewidth}
-				\begin{center}
-					\huge
-					\faWarning
-				\end{center}
-			\end{column}			
-		\end{columns}
-	\end{tcolorbox}
-	\vfill
-	\pause
-	\begin{tcolorbox}[enhanced,frame hidden,borderline={0.5pt}{0pt}{blue,dashed}]
-		\color{blue}
-		\begin{columns}[T]
-			\begin{column}{.20\linewidth}
-				\begin{center}
-					\huge
-					\faQuestionCircle
-				\end{center}
-			\end{column}			
-			\begin{column}{.60\linewidth}
-				\begin{center}
-					\vspace{-.4em}
-					{Why observables are so crucial?\qquad \qquad Quantization!}	
-				\end{center}
-			\end{column}			
-			\begin{column}{.20\linewidth}
-				\begin{center}
-					\huge
-					\faQuestionCircle
-				\end{center}
-			\end{column}			
-		\end{columns}
-	\end{tcolorbox}
+	\begin{table}
+		\only<4>{
+		\begin{tabular}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.35\textwidth}|} 
+            \hline
+            \parbox[][20pt][c]{0.2\textwidth}{mechanics} & \multicolumn{2}{c|}{geometry} \\
+            \hline
+            \parbox[][20pt][c]{0.2\textwidth}{phase space} & symplectic manifold &  \\[.25em]
+            \parbox[][20pt][c]{0.2\textwidth}{classical \\ observables} & Poisson algebra &  \\[.25em]
+            \parbox[][20pt][c]{0.2\textwidth}{symmetries} &  group actions admitting comoment map &  
+            \\
+            \hline
+  \multicolumn{1}{c}{}
+            &  \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{point-like particles systems}}$} 
+            &  \multicolumn{1}{@{}c@{}}{}              \\
+		\end{tabular}
+		
+		
+		}
+		\onslide<5->{
+		\begin{tabular}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.35\textwidth}|} 
+            \hline
+            \parbox[][20pt][c]{0.2\textwidth}{mechanics} & \multicolumn{2}{c|}{geometry} \\
+            \hline
+            \parbox[][20pt][c]{0.2\textwidth}{phase space} & symplectic manifold & multisymplectic manifold \\[.25em]
+            \parbox[][20pt][c]{0.2\textwidth}{classical \\ observables} & Poisson algebra & $L_\infty$-algebra \\[.25em]
+            \parbox[][20pt][c]{0.2\textwidth}{symmetries} &  group actions admitting comoment map & group actions admitting (homotopy) comomentum map
+            \\
+            \hline
+  			\multicolumn{1}{c}{}
+            &  \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{point-like particles systems}}$} 
+            &
+            \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{field-theoretic systems}}$} 
+               \\
+		\end{tabular}
+		}
+	\end{table}	
 
 
 
@@ -399,44 +274,22 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 	The key point is that, just as one can associate a symplectic manifold to an ordinary classical mechanical system (e.g. a single
 point-like particle constrained to some manifold), it is possible to associate a multisymplectic
 manifold to any classical field system (e.g. a continuous medium like a filament or a fluid). See frame Extra-\ref{Frame:Ms-Field-Mechanics} 
-	\item Forger and Romero say: \emph{"The multisymplectic formalism is manifestly consistent with the basic principles of field theory, preserving full covariance, and it is mathematically rigorous because it uses well established methods from calculus on finite-dimensional manifolds. On the other hand, it does not seem to permit any obvious definition of the Poisson bracket between observables. Even the question of what mathematical objects should represent physical observables is not totally clear and has in fact been the subject of much debate in the literature. Moreover, the introduction of n conjugate momenta for each coordinate obscures the usual duality between canonically con- jugate variables (such as momenta and positions), which plays a fundamental role in all known methods of quantization.A definite solution to these problems has yet to be found."}
 	
+	\item General ideas basic parallelisms with caveats
+	\item caveat: points in multiphase spaces are not states
+	\item the table hides the duality between geometric and algebraic approaches to the problem.
+	\item	Mechanics: geometrical foundations of \textit{(first-order)} field theories.
+		\begin{itemize}
+		 \item[-] Kijowski, W. Tulczyjew \cite{Kijowski1979}; %(1979)
+		 \item[-] Cariñena, Crampin, Ibort \cite{Carinena1991b};% (1991)
+		 \item[-] Gotay, Isenberg, Marsden, Montgomery \cite{Gimmsy1};%(1998)
+		 \\ $\cdots$
+		\end{itemize}
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-%------------------------------------------------------------------------------------------------------
-\begin{frame}{Scope of the talk}
-	%
-	\centering
-	\begin{tikzpicture}
-		\node [draw,ellipse callout,red, minimum height=10em,minimum width=30em,callout relative pointer={(-2,-.5)}] (L1) {};
-		\node [text width=25em,text centered] (L2) {
-			\textcolor{red}{Broad \emph{general} question:}
-			\\
-			\medskip
-			What is the corresponding	 "correct" notion of observables in multisymplectic geometry?	
-		};
-	\end{tikzpicture}
-	\vfill
-	\pause
-	\begin{tikzpicture}
-		\node [draw,blue,ellipse callout, minimum height=10em,minimum width=30em,callout relative pointer={(2,-.5)}] (L1) {};
-		\node [text width=25em,text centered] (L2) {
-			\textcolor{blue}{Specific \emph{technical} question}:
-			\\
-			\medskip
-			How the compatibility diagram between \emph{gauge transformation}
-			and \emph{comomentum maps} extends to the $n$-plectic case?
-		};
-	\end{tikzpicture}
-\end{frame}
-\note[itemize]{
-	\item Non ho una risposta soddifacente alla domanda generale. Bisogna procedere per gradi.
-	\item l'obbiettivo di questo lavoro con Marco è di stabilire quanto della seguente situazione si estende nel caso multisimplettico.
-	\item It is possible to relate the observables algebras of two gauge-related multisymplectic structures (in he same cohomology class)
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 

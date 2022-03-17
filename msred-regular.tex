@@ -226,6 +226,77 @@ i.e. making the diagram commute in the $L_\infty$-algebras category.
 }
 %---------------------------------------------------------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[t]{Symmetries in \textbf{multisymplectic geometry}}
+	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  preserving the $n$-plectic form $\omega$,
+	\vfill
+
+	\vspace{-1em}
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\centering \it
+			\onslide<2->{
+				$-$ symplectic case $-$
+				\begin{defblock}[Comoment map pertaining to $v$]
+					Lie algebra morphism
+					$$ f: \mathfrak{g} \to C^\infty(M) $$
+					such that
+					$$ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
+				\end{defblock}
+			}
+		\end{column}	
+		%
+		\onslide<2->{\vrule{}}
+		%
+		\begin{column}{.50\linewidth}
+			\centering \it
+			\onslide<3->{			
+				$-$ $n$-plectic case $-$
+				\begin{defblock}[Homotopy comoment map \tiny (HCMM)]
+					$L_\infty$-morphism 
+					$$ (f_k) : \mathfrak{g} \to L_\infty (M,\omega)$$
+					such that
+					$$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
+				\end{defblock}	
+			}
+		\end{column}	
+	\end{columns}	
+	%
+	\pause
+	\vfill
+	\centering 
+	\onslide<4->{\textbf{-- Conserved quantities --}}
+	%
+	\vspace{-.5em}
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\centering \it
+			\onslide<4->{
+			\begin{propblock}[Noether Theorem]
+				\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
+				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
+			\end{propblock}
+			}
+		\end{column}	
+		%
+		\onslide<5->{\vrule{}}
+		%
+		\begin{column}{.50\linewidth}
+			\centering \it
+			\onslide<5->{			
+			\begin{propblock}[RWZ16 Theorem]
+				\small Fixed $H\in \Omega^{n-1}_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant),
+				$$\mathcal{L}_{v_H} f_k(p) \in B^k(M) \qquad \forall p \in Z_k(\mathfrak{g})$$			
+			\end{propblock}
+			}
+		\end{column}	
+	\end{columns}		
+\end{frame}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 \end{document}

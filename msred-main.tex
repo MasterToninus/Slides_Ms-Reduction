@@ -152,6 +152,75 @@ This talk is based on ongoing joint work with Casey Blacker and Leonid Ryvkin.
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 	\input{msred-intro}
 
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Scope of the talk} 
+	    		\tableofcontents
+
+
+		\tikz[overlay,remember picture]
+		{
+			\node[draw,
+					ellipse callout,
+					red, 
+					minimum height=6em,
+					minimum width=14em,
+					callout relative pointer={(-4,-.5)}
+			] (base1) at ($(current page.north east)-(3,2.25)$) {};
+			\node
+            	 [rotate=-0,
+    	        	 text width=16em,
+            	 text centered, 
+            	 color=black] 
+            	 (text) at (base1)
+            	 {
+	            	 Review of the  multisym. geometry basics.
+            	 };
+
+			\node[draw,
+					ellipse callout,
+					red, 
+					minimum height=6em,
+					minimum width=14em,
+					callout relative pointer={(-.5,-.5)}
+			] (base2) at ($(current page.east)-(3,0)$) {};
+			\node
+            	 [rotate=-0,
+    	        	 text width=16em,
+            	 text centered, 
+            	 color=black] 
+            	 (text) at (base2)
+            	 {
+	            	 Discuss the \underline{regular reduction} scheme in multisym. geometry.
+            	 };
+
+			\node[draw,
+					ellipse callout,
+					red, 
+					minimum height=6em,
+					minimum width=14em,
+					callout relative pointer={(-.5,-.5)}
+			] (base3) at ($(current page.east)-(3,3)$) {};
+			\node
+            	 [rotate=-0,
+    	        	 text width=16em,
+            	 text centered, 
+            	 color=black] 
+            	 (text) at (base3)
+            	 {
+	            	 Discuss the \underline{singular reduction} scheme in multisym. geometry.
+            	 };
+		}	
+
+\end{frame}
+\note[itemize]{
+	\item
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Multisymplectic Geometry}
