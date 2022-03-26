@@ -83,6 +83,85 @@
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink]{Homotopy co-moment maps \emph{(Callies, Fregier, Rogers, Zambon)}}
+	\begin{columns}
+		\begin{column}{.625\linewidth}	
+			HCMM is an $L_\infty$-morphism  $\quad(f):\mathfrak{g}\to L_\infty(M,\omega)$
+			\\[.5em]
+			 lifting the  infinitesimal action $\quad v:\mathfrak{g}\to \mathfrak{X}(M)$
+		\end{column}
+		\begin{column}{.325\linewidth}	
+			\begin{displaymath}
+				\begin{tikzcd}[column sep = large]
+					& L_{\infty}(M,\omega) \ar[d,"\mathscr{v}"]
+					\\
+					\mathfrak{g} \ar[ur,dashed,"(f)"]\ar[r,"v"']& \mathfrak{X}(M)
+				\end{tikzcd}	
+			\end{displaymath}		
+		\end{column}
+	\end{columns}
+	\pause
+	\begin{lemblock}[HCMM unfolded  \cite{Callies2016}]
+			%
+			HCMM is a sequence of (graded-skew) multilinear maps:
+			\begin{displaymath}
+				(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L_{k-1} \subseteq \Omega^{n-k} 
+				\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
+			\end{displaymath}
+			%
+			\vspace{-.5em}	
+			\includestandalone[width=0.9\textwidth]{Pictures/Frame_HCMM}
+			
+			\vspace{-1em}		
+			\emph{fulfilling:}%\emph{such that:}
+			\begin{itemize}
+				\item<2-> $f_0 = 0 $, $f_{n+1} = 0$
+				\item<3-> $d f_k (p) = f_{k-1} (\partial p)  - (-1)^{\frac{k(k+1)}{2}} \iota(v_p) \omega 
+				\qquad\scriptstyle \forall p \in \Lambda^k(\mathfrak{g}),\; \forall k=1,\dots n+1$
+			\end{itemize}
+		\end{lemblock}
+
+	\begin{tamblock}
+	 Practically a HCMM is given by several multilinear maps
+	 \begin{displaymath}
+	 	f_i = \Lambda^i \mathfrak{g} \to L_{i-1}
+	 \end{displaymath}
+	 satisfying:
+	 \begin{enumerate}
+	 	\item $ d f_1(\xi) = - \iota_{v_\xi} \omega$
+	 	\item $\sum ...$
+	 \end{enumerate}
+	\end{tamblock}
+
+
+\end{frame}
+\note[itemize]{
+	%\item 		Consider:  $v:\mathfrak g\to \mathfrak X(M)$  a Lie algebra morphism  s.t. $\mathcal{L}_{v_x}\omega=0 \quad  \forall x\in\mathfrak g$ (i.e infinitesimal multisymplectic Lie algebra action $\mathfrak{g}\circlearrowleft (M,\omega)$)
+	\item More conceptually, a comoment is an $L_\infty$-morphism $(f):\mathfrak{g}\to L_\infty(M,\omega)$ lifting the action $v:\mathfrak{g}\to \mathfrak{X}(M)$, 
+i.e. making the diagram commute in the $L_\infty$-algebras category.
+	\item The vertical arrow is the trivial $L_\infty$-extension of the function mapping any Hamiltonian form to the unique corresponding Hamiltonian vector field (an it is zero elsewhere)
+		\\
+		(Note that any Lie algebra can be seen as an $L_\infty$-algebra concentrated in degree $0$, therefore any $L_\infty$-morphism $L\to\mathfrak{g}$ is simply given by a linear map $L_0 \to \mathfrak{g}$ preserving the binary brackets.)
+	\item We will make use of an explicit version of this definition which is expressed by the lemma.
+	 Practically speaking, a HCMM is given by several multilinear maps ...
+	 \item In the equation we have tacitly set $\Lambda^{-1}(M) = 0$
+	 %\item Notation: \qquad $\partial =$ Chevalley-Eilenberg boundary operator.
+	%\item Notice that a HCMM pertains to an "infinitesimal" action of ${\mathfrak g}$ on $M$ with ${\mathfrak g}$ being the Lie algebra of a generic Lie group $G$, acting on $M$ by $\omega$-preserving vector fields.
+		\item (Notation) $ p = \xi_1 \wedge \xi_2 \wedge \dots \wedge \xi_k$, 
+			then $v_p = v_1 \wedge v_2 \wedge \dots \wedge v_k$ 
+			where $v_i \equiv v_{\xi_i}$ are the fundamental vector fields associated to the action $G \circlearrowright M$.
+	%	\item (Notation) $\iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
+	%	\item $\varsigma(k) := - (-1)^{\frac{k(k+1)}{2}}$ 
+		\item (Notation) $(\iota^{k}_{\mathfrak{g}}\omega)(p):= \iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
+		\item $\partial \equiv \partial_k:  \Lambda^{k} {\mathfrak g} \to \Lambda^{k-1} {\mathfrak g}$  is the usual Eilenberg-Chevalley complex boundary operator (see appendix, pag: \ref{frame:CE-complex});
+%		\item The definition tells us that the {\it closed} forms
+%			$$\mu_k := f_{k-1} (\partial p) +  \varsigma(k) \iota(v_p) \omega 	$$
+%			must actually be {\it exact}, with potential $-f_k(p)$.  	
+		\item The last equation tells us that an HCMM is not a chain complex morphism but is rather a chain complex homotopy between 0 and the multicontraction $\alpha=(\iota^{k}_{\mathfrak{g}}\omega)$ (see next slide).
+		is a chain map by lemma 2.18 \cite{Ryvkin2016}).
+}
+%---------------------------------------------------------------------------------------------------------------------------------
 
 
 

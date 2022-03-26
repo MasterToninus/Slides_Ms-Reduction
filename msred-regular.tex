@@ -6,8 +6,8 @@
 \makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
-\documentclass[beamer,10pt]{standalone}   
-%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+%\documentclass[beamer,10pt]{standalone}   
+\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
 \ifHandout
 	\setbeameroption{show notes} %print notes   
@@ -27,9 +27,307 @@
 \usetikzlibrary{shapes}
 
 \begin{document}
-
 %------------------------------------------------------------------------------------------------
 
+\subsection{Regular reduction in symplectic geometry}
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Reminder: momentum maps in symplectic geometry}
+	Consider $\theta:G\curvearrowright M$ symplectic,~~ $\underline{\cdot}:\mathfrak{g}\to \mathfrak{X}(M)$ infinitesimal action.
+	\vfill
+
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\centering \it
+			\onslide<2->{
+				\begin{defblock}[Equivariant moment map]
+					Smooth map $$\mu:M\to \mathfrak{g}^\ast$$
+					such that:
+					\begin{itemize}
+						\item[i.] $d\langle \mu,\xi\rangle = -\iota_{\underline{\xi}}\omega$ 
+						~\qquad, $\forall \xi \in \mathfrak{g}$
+						\item[ii.] $\mu \circ \theta_g = Ad_g^\ast \circ \mu$
+						 \qquad\small, $\forall g \in G$
+					\end{itemize}
+				\end{defblock}
+			}
+		\end{column}	
+		%
+		\onslide<2->{\vrule{}}
+		%
+		\begin{column}{.50\linewidth}
+			\onslide<3->{			
+				\begin{defblock}[Comoment map]
+					Linear map $$\widetilde{\mu}: \mathfrak{g}\to C^\infty(M,\omega)$$
+					such that:
+					\begin{itemize}
+						\item[i.] $d\widetilde{\mu}(\xi) = -\iota_{\underline{\xi}}\omega$ 
+						\qquad~\small, $\forall \xi \in \mathfrak{g}$
+						\item[ii.] $\widetilde{\mu}([\xi,\eta]) = \lbrace\widetilde{\mu}(\xi),\widetilde{\mu}(\eta)\rbrace$ \small, $\forall \xi,\eta \in \mathfrak{g}$
+					\end{itemize}
+				\end{defblock}
+			}
+		\end{column}	
+	\end{columns}	
+	%
+	\pause
+	\vspace{1em}
+	%
+	\begin{columns}[]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.40\linewidth}
+			%
+			\centering \it
+			\onslide<5->{
+				\begin{upshotblocktitle}[Duality]
+					\begin{displaymath}
+						\mu(x) : \mathfrak{\xi} \mapsto \widetilde{\mu}(\xi)\big\vert_x
+					\end{displaymath}
+					%
+					\emph{
+					\small
+					"duality wrt. the currying operation"					
+					}
+				\end{upshotblocktitle}
+			}
+		\end{column}	
+		%
+		%
+		\begin{column}{.60\linewidth}
+			\onslide<4->{			
+				\begin{upshotblocktitle}[$\widetilde{\mu}$ as a lift]
+					\begin{displaymath}
+						\begin{tikzcd}[ampersand replacement = \&]
+						 \& C^\infty(M,\omega) \ar[d,"\vHam"]
+						 \\
+						 \mathfrak{g} \ar[ur,dashed,sloped,"\widetilde{\mu}"]\ar[r,"\underline{\cdot}"'] \& \mathfrak{X}(M)
+						\end{tikzcd}
+					\end{displaymath}
+					%
+					\emph{
+					\small
+					"it is a lift (in the Lie category) of the infinitesimal action by the assigment of hamiltonian v.fields."					
+					}
+				\end{upshotblocktitle}
+			}
+		\end{column}	
+	\end{columns}		
+\end{frame}
+\note[itemize]{
+	\item consider an action preserving the symplectic form.
+	\item details:
+	\begin{itemize}
+		\item[-] $\langle \cdot, \cdot \rangle$ is the natural pairing of $\mathfrak{g}$ and $\mathfrak{g}^\ast$.
+		\item[-] $\theta_g$ is the diffeomorphism associated to $g\in G$ via $\theta:G\curvearrowright M$
+		\item[-] $Ad^\ast_g$ is the coadjoint action $G\curvearrowright \mathfrak{g}^\ast$
+	\end{itemize}
+	\item The moment map can be reexpressed as a comomentum map.
+	\item Observe that ii. on the left always implies ii. on the right. The converse is trure only if $G$ is connected.
+	\item $G\curvearrowright M$ is said "Hamiltonian" iff it admits comoment map $\widetilde{\mu}$.
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Reminder: regular reduction in symplectic geometry}
+	\textbf{\color{UniGreen}Symplectic reduction:}~~
+	\\ 
+	{\it \small
+	Procedure associating to any (suitably regular) pair of symplectic manifold and Hamiltonian action another symplectic manifold of smaller dimension.}
+	\vfill
+	\pause
+	\begin{thmblock}[Marsden-Weinstein reduction \cite{MarsdenWeinstein74}]
+		\vspace{-.4em}\hspace{-1em}
+		\begin{tabular}{l p{14cm}}
+		    Given: & $(M,\omega)$ symplectic
+		    \\
+		    & $G\curvearrowright M$ symplectic with equivariant momap. $\mu:M\to \mathfrak{g}^*$
+		    \\[.2em]
+		    Assume: & $\phi \in \mathfrak{g}^*$ regular value of $\mu$ 
+		    \qquad\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $\mu^{-1}(\phi)\hookrightarrow M$ smooth embedding)}
+		    \\
+			& $G_\phi\curvearrowright \mu^{-1}(\phi)$ free and proper
+			\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $\mu^{-1}(\phi)/G_\phi$ smooth manifold)}
+			\\[.4em]
+			Then: & $\exists!$ symplectic structure $\omega_\phi$ in $M_\phi:= \mu^{-1}(\phi)/G_\phi$ \\
+			& s.t. $\pi^\ast \omega_\phi = j^\ast \omega$ 
+			\qquad {\footnotesize with $j:\mu^{-1}(\phi) \hookrightarrow M$ and $\pi:\mu^{-1}(\phi)\twoheadrightarrow M_\mu$}
+		\end{tabular}
+		\vspace{-.4em}
+	\end{thmblock}
+	%
+	\vfill
+	\pause
+	\begin{columns}
+		\begin{column}{0.40\textwidth}
+			\includegraphics[width=\textwidth]{Pictures/Reduction}
+		\end{column}	
+		
+		\begin{column}{0.6\textwidth}
+				\textbf{\color{UniGreen}In mechanics:}~~
+				\\
+			{\it \small
+				it embodies the process of restricting the dynamics of the system to the level sets of the conserved quantities pertaining to the symmetry group.		
+			}
+			\\[.2em]
+			\color{gray}\small( e.g. restricting to studying a point-like particle in a central potential by studying it in radial coordinates)
+		\end{column}	
+	\end{columns}	
+\end{frame}
+\note[itemize]{
+	\item
+}
+%------------------------------------------------------------------------------------------------
+
+\subsection{Regular reduction in multisymplectic geometry}
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Momentum maps in multisymplectic geometry}
+	Consider $\theta:G\curvearrowright M$ {\color{UniGreen}multi}symplectic,~~ $\underline{\cdot}:\mathfrak{g}\to \mathfrak{X}(M)$ infinitesimal action.
+	\vfill
+
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\centering \it
+			\onslide<2->{
+				\begin{defblock}[Equivariant moment map]
+					Smooth map $$\mu:M\to \mathfrak{g}^\ast{\color{UniGreen}\otimes \Lambda^{n-1}T^\ast M}$$
+					such that:
+					\begin{itemize}
+						\item[i.] $d\langle \mu,\xi\rangle = -\iota_{\underline{\xi}}\omega$ \qquad\qquad \small,$\forall \xi \in \mathfrak{g}$
+						\item[ii.] $\mu \circ \theta_g = \left(Ad_g^\ast {\color{UniGreen} \,\otimes\, \theta^\ast_g}\right) \circ \mu$ \quad \small, $\forall g \in G$
+						\item[iii.] {\color{UniGreen} $\mu \in \Omega^{n-1}(M,\mathfrak{g})$}
+					\end{itemize}
+				\end{defblock}
+			}
+		\end{column}	
+		%
+		\onslide<2->{\vrule{}}
+		%
+		\begin{column}{.50\linewidth}
+			\onslide<3->{			
+				\begin{defblock}[Comoment map]
+					Linear map $$\widetilde{\mu}: \mathfrak{g}\to {\color{UniGreen}Leib(M,\omega)}$$
+					such that:
+					\begin{itemize}
+						\item[i.] $d\widetilde{\mu}(\xi) = -\iota_{\underline{\xi}}\omega$ 
+						\qquad~\small, $\forall \xi \in \mathfrak{g}$
+						\item[ii.] $\widetilde{\mu}([\xi,\eta]) = \lbrace\widetilde{\mu}(\xi),\widetilde{\mu}(\eta)\rbrace$ \small, $\forall \xi,\eta \in \mathfrak{g}$
+					\end{itemize}
+				\end{defblock}
+			}
+		\end{column}	
+	\end{columns}	
+	%
+	\pause
+	\vspace{.5em}
+	%
+	\begin{columns}[]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.40\linewidth}
+			%
+			\centering \it
+			\onslide<5->{
+				\begin{upshotblocktitle}[Duality]
+					\begin{displaymath}
+						\mu(x) : \mathfrak{\xi} \mapsto \widetilde{\mu}(\xi)\big\vert_x
+					\end{displaymath}
+					%
+					\emph{
+					\small
+					"duality wrt. the currying operation"					
+					}
+				\end{upshotblocktitle}
+			}
+		\end{column}	
+		%
+		%
+		\begin{column}{.60\linewidth}
+			\onslide<4->{			
+				\begin{upshotblocktitle}[$\widetilde{\mu}$ as a lift]
+					\begin{displaymath}
+						\begin{tikzcd}[ampersand replacement = \&]
+						 \& {\color{UniGreen}Leib(M,\omega)} \ar[d,"\vHam"]
+						 \\
+						 \mathfrak{g} \ar[ur,dashed,sloped,"\widetilde{\mu}"]\ar[r,"\underline{\cdot}"'] \& \mathfrak{X}(M)
+						\end{tikzcd}
+					\end{displaymath}
+					%
+					\emph{
+					\small
+					"it is a lift (in the {\color{UniGreen}Leibniz} category) of the infinitesimal action by the assigment of hamiltonian v.fields."					
+					}
+				\end{upshotblocktitle}
+			}
+		\end{column}	
+	\end{columns}		
+\end{frame}
+\note[itemize]{
+	\item consider an action preserving the symplectic form.
+	\item details:
+	\begin{itemize}
+		\item[-] $\langle \cdot, \cdot \rangle$ is the natural pairing of $\mathfrak{g}$ and $\mathfrak{g}^\ast$.
+		\item[-] $\theta_g$ is the diffeomorphism associated to $g\in G$ via $\theta:G\curvearrowright M$
+		\item[-] $Ad^\ast_g$ is the coadjoint action $G\curvearrowright \mathfrak{g}^\ast$
+		\item[-] $\theta^\ast_g$ is the induced action $G\curvearrowright \Lambda^{n-1}T^\ast M$ (lift on differential forms)
+
+	\end{itemize}
+	\item The moment map can be reexpressed as a comomentum map.
+	\item Observe that ii. on the left always implies ii. on the right. The converse is trure only if $G$ is connected.
+	\item $G\curvearrowright M$ is said "Hamiltonian" iff it admits comoment map $\widetilde{\mu}$.
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}{Regular reduction in multisymplectic geometry}
+	Let $(M,\omega)$ be $n$-plectic.
+	Consider an action $G\curvearrowright M$ with moment map $\mu$.
+
+	\pause
+	\vfill
+	\begin{defblock}[Regular value of $\mu$]
+		Closed differential form $\phi \in \Omega^{n-1}(M,\mathfrak{g}^\ast)$, such that
+		$$
+		 \mu^{-1}(\phi)=\lbrace x \in M ~ \vert ~ \mu(x)=\phi(x)\rbrace
+		$$
+		is a smoothly embedded into $M$.	
+	\end{defblock}	
+	
+	\pause
+	\vfill
+	
+
+	\begin{thmblock}[Multisymplectic regular reduction \cite{Blacker20}]
+		\vspace{-.4em}\hspace{-1em}
+		\begin{tabular}{l p{14cm}}
+		    Given: & $(M,\omega)$ {\color{UniGreen}$n$-}plectic
+		    \\
+		    & $G\curvearrowright M$ {\color{UniGreen}multi}symplectic with equivariant momap. {\color{UniGreen}$\mu\in \Omega^{n-1}(M,\mathfrak{g}^*)$}
+		    \\[.2em]
+		    Assume: & $\phi \in {\color{UniGreen} \Omega^{n-1}(M,\mathfrak{g}^*)}$ regular value of $\mu$ 
+		    \quad\quad \footnotesize \textcolor{gray}{($\mu^{-1}(\phi)\hookrightarrow M$ embedding)}
+		    \\
+			& $G_\phi\curvearrowright \mu^{-1}(\phi)$ free and proper
+			\quad\qquad \footnotesize \textcolor{gray}{($\mu^{-1}(\phi)/G_\phi$ smooth manifold)}
+			\\[.4em]
+			Then: & $\exists!$ {\color{UniGreen}pre-n-}plectic structure $\omega_\phi$ in $M_\phi:= \mu^{-1}(\phi)/G_\phi$ \\
+			& s.t. $\pi^\ast \omega_\phi = j^\ast \omega$ 
+			\qquad {\footnotesize with $j:\mu^{-1}(\phi) \hookrightarrow M$ and $\pi:\mu^{-1}(\phi)\twoheadrightarrow M_\mu$}
+		\end{tabular}
+		\vspace{-.4em}
+	\end{thmblock}	
+	
+\end{frame}
+\note[itemize]{
+	\item First: introduce the higher analague of a "regular value" for the higher comomentum map.
+	\item The notion of $G$-equivariant covariant moment map turns out to be the right prerequisite for reduction in the multisymplectic setting. Somewhat surprisingly, this is true, even for the ($L_\infty$-)algebraic reduction, where one might expect homotopy moment maps, which directly interact with the involved $L_\infty$-structures to play a role.
+	\item pre-$n$-plectic means closed and possibly degenerate.
+}
+%------------------------------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------------------------------
 % Frame inspired by Leonid: passing from moment maps to comoment maps
 \begin{frame}[fragile]{Reminder: Moment maps in symplectic geometry}
 	Let $(M,\omega)$ be a symplectic manifold, $\vartheta: G\times M \to M$ a Lie group action preserving $\omega$ and $v:\mathfrak{g}\to \mathfrak{X}(M)$ the corresponding infinitesimal action
@@ -66,9 +364,9 @@
 				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
 	\end{propblock}
 \end{frame}
-%\note[itemize]{
-%	\item comoment map is a Lie algebra morphism projecting to $v$. (Triangle diagram in Lie algebra category).
-%}
+\note[itemize]{
+	\item comoment map is a Lie algebra morphism projecting to $v$. (Triangle diagram in Lie algebra category).
+}
 
 
 
@@ -98,133 +396,22 @@
   	\end{column}
 	\end{columns}			
 \end{frame}
+\note{
+}
 %------------------------------------------------------------------------------------------------
 
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}{Research proposal context: (multi)symplectic reduction}
-	\textbf{\color{UniGreen}Symplectic reduction:}~~
-	Procedure associating to any (suitably regular) pair of symplectic manifold and Hamiltonian action another symplectic manifold of smaller dimension.
-	\vfill
-	\pause
-	\begin{thmblock}[Marsden-Weinstein reduction]
-		\vspace{-.4em}
-		\begin{tabular}{l p{12cm}}
-		    Given: & $(M,\omega)$ symplectic
-		    \\
-		    & $G\curvearrowright M$ symplectic with equivariant momap. $J:M\to \mathfrak{g}^*$
-		    \\[.2em]
-		    Assume: & $\mu \in \mathfrak{g}^*$ regular value of $J$ 
-		    \qquad\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)\hookrightarrow M$ smooth embedding)}
-		    \\
-			& $G_\mu\action J^{-1}(\mu)$ free and proper
-			\quad \footnotesize \textcolor{gray}{($\Rightarrow$ $J^{-1}(\mu)/G_\mu$ smooth manifold)}
-			\\[.4em]
-			Then: & $\exists!$ symplectic structure $\omega_\mu$ in $M_\mu:= J^{-1}(\mu)/G_\mu$ \\
-			& s.t. $\pi^\ast \omega_\mu = j^\ast \omega$ with $j:M_\mu \hookrightarrow M$ and $\pi:M\twoheadrightarrow M_\mu$
-		\end{tabular}
-		\vspace{-.4em}
-	\end{thmblock}
-	%
-	\vfill
-	\pause
-	\begin{columns}
-		\begin{column}{0.40\textwidth}
-			\includegraphics[width=\textwidth]{Pictures/Reduction}
-		\end{column}	
-		
-		\begin{column}{0.6\textwidth}
-				\textbf{\color{UniGreen}In mechanics:}~~
-			it embodies the process of restricting the dynamics of the system to the level sets of the conserved quantities pertaining to the symmetry group.		
-			\\
-			\color{gray}\small( e.g. restricting to studying a point-like particle in a central potential by studying it in radial coordinates only)
-		\end{column}	
-	\end{columns}	
+
 
 
 \end{frame}
+\note{
+}
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[fragile,shrink]{Homotopy co-moment maps \emph{(Callies, Fregier, Rogers, Zambon)}}
-	\begin{columns}
-		\begin{column}{.625\linewidth}	
-			HCMM is an $L_\infty$-morphism  $\quad(f):\mathfrak{g}\to L_\infty(M,\omega)$
-			\\[.5em]
-			 lifting the  infinitesimal action $\quad v:\mathfrak{g}\to \mathfrak{X}(M)$
-		\end{column}
-		\begin{column}{.325\linewidth}	
-			\begin{displaymath}
-				\begin{tikzcd}[column sep = large]
-					& L_{\infty}(M,\omega) \ar[d,"\mathscr{v}"]
-					\\
-					\mathfrak{g} \ar[ur,dashed,"(f)"]\ar[r,"v"']& \mathfrak{X}(M)
-				\end{tikzcd}	
-			\end{displaymath}		
-		\end{column}
-	\end{columns}
-	\pause
-	\begin{lemblock}[HCMM unfolded  \cite{Callies2016}]
-			%
-			HCMM is a sequence of (graded-skew) multilinear maps:
-			\begin{displaymath}
-				(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L_{k-1} \subseteq \Omega^{n-k} 
-				\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
-			\end{displaymath}
-			%
-			\vspace{-.5em}	
-			\includestandalone[width=0.9\textwidth]{Pictures/Frame_HCMM}
-			
-			\vspace{-1em}		
-			\emph{fulfilling:}%\emph{such that:}
-			\begin{itemize}
-				\item<2-> $f_0 = 0 $, $f_{n+1} = 0$
-				\item<3-> $d f_k (p) = f_{k-1} (\partial p)  - (-1)^{\frac{k(k+1)}{2}} \iota(v_p) \omega 
-				\qquad\scriptstyle \forall p \in \Lambda^k(\mathfrak{g}),\; \forall k=1,\dots n+1$
-			\end{itemize}
-		\end{lemblock}
-
-	\begin{tamblock}
-	 Practically a HCMM is given by several multilinear maps
-	 \begin{displaymath}
-	 	f_i = \Lambda^i \mathfrak{g} \to L_{i-1}
-	 \end{displaymath}
-	 satisfying:
-	 \begin{enumerate}
-	 	\item $ d f_1(\xi) = - \iota_{v_\xi} \omega$
-	 	\item $\sum ...$
-	 \end{enumerate}
-	\end{tamblock}
-
-
-\end{frame}
-\note[itemize]{
-	%\item 		Consider:  $v:\mathfrak g\to \mathfrak X(M)$  a Lie algebra morphism  s.t. $\mathcal{L}_{v_x}\omega=0 \quad  \forall x\in\mathfrak g$ (i.e infinitesimal multisymplectic Lie algebra action $\mathfrak{g}\circlearrowleft (M,\omega)$)
-	\item More conceptually, a comoment is an $L_\infty$-morphism $(f):\mathfrak{g}\to L_\infty(M,\omega)$ lifting the action $v:\mathfrak{g}\to \mathfrak{X}(M)$, 
-i.e. making the diagram commute in the $L_\infty$-algebras category.
-	\item The vertical arrow is the trivial $L_\infty$-extension of the function mapping any Hamiltonian form to the unique corresponding Hamiltonian vector field (an it is zero elsewhere)
-		\\
-		(Note that any Lie algebra can be seen as an $L_\infty$-algebra concentrated in degree $0$, therefore any $L_\infty$-morphism $L\to\mathfrak{g}$ is simply given by a linear map $L_0 \to \mathfrak{g}$ preserving the binary brackets.)
-	\item We will make use of an explicit version of this definition which is expressed by the lemma.
-	 Practically speaking, a HCMM is given by several multilinear maps ...
-	 \item In the equation we have tacitly set $\Lambda^{-1}(M) = 0$
-	 %\item Notation: \qquad $\partial =$ Chevalley-Eilenberg boundary operator.
-	%\item Notice that a HCMM pertains to an "infinitesimal" action of ${\mathfrak g}$ on $M$ with ${\mathfrak g}$ being the Lie algebra of a generic Lie group $G$, acting on $M$ by $\omega$-preserving vector fields.
-		\item (Notation) $ p = \xi_1 \wedge \xi_2 \wedge \dots \wedge \xi_k$, 
-			then $v_p = v_1 \wedge v_2 \wedge \dots \wedge v_k$ 
-			where $v_i \equiv v_{\xi_i}$ are the fundamental vector fields associated to the action $G \circlearrowright M$.
-	%	\item (Notation) $\iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
-	%	\item $\varsigma(k) := - (-1)^{\frac{k(k+1)}{2}}$ 
-		\item (Notation) $(\iota^{k}_{\mathfrak{g}}\omega)(p):= \iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
-		\item $\partial \equiv \partial_k:  \Lambda^{k} {\mathfrak g} \to \Lambda^{k-1} {\mathfrak g}$  is the usual Eilenberg-Chevalley complex boundary operator (see appendix, pag: \ref{frame:CE-complex});
-%		\item The definition tells us that the {\it closed} forms
-%			$$\mu_k := f_{k-1} (\partial p) +  \varsigma(k) \iota(v_p) \omega 	$$
-%			must actually be {\it exact}, with potential $-f_k(p)$.  	
-		\item The last equation tells us that an HCMM is not a chain complex morphism but is rather a chain complex homotopy between 0 and the multicontraction $\alpha=(\iota^{k}_{\mathfrak{g}}\omega)$ (see next slide).
-		is a chain map by lemma 2.18 \cite{Ryvkin2016}).
-}
-%---------------------------------------------------------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}[t]{Symmetries in \textbf{multisymplectic geometry}}
@@ -296,6 +483,8 @@ i.e. making the diagram commute in the $L_\infty$-algebras category.
 		\end{column}	
 	\end{columns}		
 \end{frame}
+\note{
+}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
