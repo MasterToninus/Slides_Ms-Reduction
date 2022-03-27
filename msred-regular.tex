@@ -6,8 +6,8 @@
 \makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
-%\documentclass[beamer,10pt]{standalone}   
-\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
 \ifHandout
 	\setbeameroption{show notes} %print notes   
@@ -16,6 +16,7 @@
 	
 %- Packages ----------------------------------------------------------------------------------------------
 \usepackage{custom-style}
+\usepackage{math}
 \usetikzlibrary{positioning}
 \usepackage{multicol}
 
@@ -31,7 +32,7 @@
 
 \subsection{Regular reduction in symplectic geometry}
 %------------------------------------------------------------------------------------------------
-\begin{frame}{Reminder: momentum maps in symplectic geometry}
+\begin{frame}{Reminder: momentum maps in symplectic geometry}\label{frame:symplecticmomaps}
 	Consider $\theta:G\curvearrowright M$ symplectic,~~ $\underline{\cdot}:\mathfrak{g}\to \mathfrak{X}(M)$ infinitesimal action.
 	\vfill
 
@@ -116,15 +117,42 @@
 \end{frame}
 \note[itemize]{
 	\item consider an action preserving the symplectic form.
-	\item details:
-	\begin{itemize}
-		\item[-] $\langle \cdot, \cdot \rangle$ is the natural pairing of $\mathfrak{g}$ and $\mathfrak{g}^\ast$.
+	\item[-] $\langle \cdot, \cdot \rangle$ is the natural pairing of $\mathfrak{g}$ and $\mathfrak{g}^\ast$.
 		\item[-] $\theta_g$ is the diffeomorphism associated to $g\in G$ via $\theta:G\curvearrowright M$
 		\item[-] $Ad^\ast_g$ is the coadjoint action $G\curvearrowright \mathfrak{g}^\ast$
-	\end{itemize}
 	\item The moment map can be reexpressed as a comomentum map.
 	\item Observe that ii. on the left always implies ii. on the right. The converse is trure only if $G$ is connected.
-	\item $G\curvearrowright M$ is said "Hamiltonian" iff it admits comoment map $\widetilde{\mu}$.
+	\item $G\curvearrowright M$ is said "Hamiltonian" (see slide \ref{frame:gisthamaction} in appendix) iff $\exists$ comoment map $\widetilde{\mu}$.
+	\item \emph{moment map: Describe ${\color{orange}G\curvearrowright M}$ in terms of $\color{blue}C^\infty(M)\to\X(M)$.}
+	\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\node[orange] (A) at (0,0) {$\g$};
+		\node[gray] (A1) at (0,-.3) {$\xi$};
+		\node[blue] (B) at (1,1) {$C^\infty(M)$};
+		\node[gray] (B2) at (1.55,1) {$f$};
+		\node[orange] (C) at (1,0) {$\X(M)$};
+		\node[gray] (C1) at (1,-.3) {$\underline\xi$};
+		\node[gray] (C2) at (1.55,0) {$X_f$};
+
+		\path[->,blue,dashed] (A) edge node[above left] {$\langle\mu,\cdot\,\rangle$} (B);
+		\path[->,orange] (A) edge (C);
+		\path[->] (B) edge (C);
+		\path[|->,gray] (A1) edge (C1);
+		\path[|->,gray] (B2) edge (C2);
+
+		\begin{scope}[xshift=3cm]
+			\node at (-.32,.8) {as Lie algebras};
+			\node at (-.13,.2) {i.e., {\color{blue}$\mu_\xi$} generates {\color{orange}$\underline\xi$}};
+		\end{scope}
+	\end{tikzpicture}
+	
+		\footnotesize		(\emph{moment map:} ${\color{blue}\mu:M\to\g^*}$, 
+	 \emph{Hamiltonian $G$-space:} 	$(M,\omega,G,\mu)$)
+	\end{center}
+	\item
+	 $\alpha\mapsto X_\alpha$ is a homomorphism of Leibniz algebras:
+	$$\d\{\alpha,\beta\} = \d\L_{X_\alpha}\beta = \L_{X_\alpha}\iota_{X_\beta}\omega = \iota_{[X_\alpha,X_\beta]}\omega ~{\color{black!80} \implies}~
+	X_{\{\alpha,\beta\}} = [X_\alpha,X_\beta]$$
 }
 %------------------------------------------------------------------------------------------------
 
@@ -175,7 +203,43 @@
 	\end{columns}	
 \end{frame}
 \note[itemize]{
-	\item
+	\item {Symplectic Reduction} takes two inputs:
+	\\ 1. Hamiltonian $G$-space $(M,\omega,{\color{orange}G},{\color{blue}\mu})$
+	\\ 2. parameter ${\color{blue}\phi}\in\g^*$
+	\item The \emph{reduced space} is $M_\phi:={\color{blue}\mu^{-1}(\phi)}{\color{orange}/G_\phi}$.
+	\item (Marsden--Weinstein '74, Meyer '73) THM:\\
+		If $\mu^{-1}(\phi)\subset M$ is smooth and $G_\phi\curvearrowright \mu^{-1}(\phi)$ is free and proper, then there is a \textbf{unique symplectic form} $\omega_\phi\in\Omega^2(M_\phi)$ such that $\pi^*\omega_\phi = i^*\omega$.
+
+
+	\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\node[blue] (A) at (0,0) {$\mu^{-1}(\phi)$};
+		\node[gray] (A1) at (0,.3) {$i^*\omega$};
+		\node[gray] (A2) at (-.6,0) {$\pi^*\omega_\phi$};
+		\node[blue] (B) at (1,0) {$M$};
+		\node[gray] (B1) at (1,.3) {$\omega$};
+		\node[orange] (C) at (0,-.8) {$M_\phi$};
+		\node[gray] (C2) at (-.6,-.8) {$\omega_\phi$};
+
+		\path[right hook->,blue] (A) edge node[above] {$i$} (B);
+		\path[orange,->] (A) edge node[left] {$\pi$} (C);
+
+		\begin{scope}[xshift=-1.8cm]
+			\node[blue] at (0,0) {\small restrict to $\{\mu=\phi\}$};
+			\node[orange] at (.15,-.4) {\small quotient by $G_\phi$};
+		\end{scope}
+	\end{tikzpicture}
+	\end{center}
+	\item Heuristic Approach to Reduction:
+	\\1. describe $G\curvearrowright M$ in terms of $\omega$ 	\hspace{1cm}
+	({\color{green}moment map $\mu$})
+	\\2. identify a distinguished reduced space \hspace{1cm}
+	({\color{green}reduction at $\mu=0$})
+	\\3. use the ambiguity in 1.\ to obtain a family of reduced spaces \hspace{1cm}
+	({\color{green}reduction at $\mu-\phi=0$, i.e.\ reduction at $\mu=\phi$}
+	\\
+	{\tiny Note: If $G_\phi\neq G$, then $\mu-\phi:M\to\g^*$ is not a moment map for either $G\curvearrowright M$ or $G_\phi\curvearrowright M$.}
+	
 }
 %------------------------------------------------------------------------------------------------
 
@@ -264,18 +328,43 @@
 	\end{columns}		
 \end{frame}
 \note[itemize]{
-	\item consider an action preserving the symplectic form.
-	\item details:
-	\begin{itemize}
+	\item consider an action preserving the multisymplectic form.
 		\item[-] $\langle \cdot, \cdot \rangle$ is the natural pairing of $\mathfrak{g}$ and $\mathfrak{g}^\ast$.
 		\item[-] $\theta_g$ is the diffeomorphism associated to $g\in G$ via $\theta:G\curvearrowright M$
 		\item[-] $Ad^\ast_g$ is the coadjoint action $G\curvearrowright \mathfrak{g}^\ast$
-		\item[-] $\theta^\ast_g$ is the induced action $G\curvearrowright \Lambda^{n-1}T^\ast M$ (lift on differential forms)
+		\item[-] $\theta^\ast_g$ is the induced action $G\curvearrowright \Lambda^{n-1}T^\ast M$ (lift on differential forms)		
+	\item As before, The moment map can be reexpressed as a comomentum map. 
+	\item As before that ii. on the left always implies ii. on the right. The converse is trure only if $G$ is connected.
+	\item \emph{moment map: Describe ${\color{orange}G\curvearrowright M}$ in terms of
+			$\underset{{\color{blue}\Omega_H^{k-1}(M)}}{\text{\cancel{${\color{blue}C^\infty(M)}$}}} \;{\color{blue}\to\X(M)}$.}
 
-	\end{itemize}
-	\item The moment map can be reexpressed as a comomentum map.
-	\item Observe that ii. on the left always implies ii. on the right. The converse is trure only if $G$ is connected.
-	\item $G\curvearrowright M$ is said "Hamiltonian" iff it admits comoment map $\widetilde{\mu}$.
+	\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\node[orange] (A) at (0,0) {$\g$};
+		\node[gray] (A1) at (0,-.3) {$\xi$};
+	\node[blue] (B) at (1,1) {$\Omega_H^{k-1}(M)$};
+		\node[gray] (B2) at (1.55,1) {$\alpha$};
+		\node[orange] (C) at (1,0) {$\X(M)$};
+		\node[gray] (C1) at (1,-.3) {$\underline\xi$};
+		\node[gray] (C2) at (1.55,0) {$X_\alpha$};
+
+		\path[->,blue,dashed] (A) edge node[above left] {$\langle\mu,\cdot\,\rangle$} (B);
+		\path[->,orange] (A) edge (C);
+		\path[->] (B) edge (C);
+		\path[|->,gray] (A1) edge (C1);
+		\path[|->,gray] (B2) edge (C2);
+
+		\begin{scope}[xshift=3cm]
+			\node at (.07,.8) {as Leibniz algebras \phantom{\color{black!50}($\pm1$)}};
+			\node at (-.13,.2) {i.e., {\color{blue}$\mu_\xi$} generates {\color{orange}$\underline\xi$}};
+			%\node at (-.39,.2) {{\color{black!50}i.e.} $X_{\color{blue}\mu_\xi} = {\color{orange}\underline\xi}$};
+		\end{scope}
+	\end{tikzpicture}
+
+	\footnotesize		(
+		\emph{moment map:}		${\color{blue}\mu\in\Omega^{k-1}(M,\g^*)}$	
+		\emph{Hamiltonian $G$-space:}	$(M,\omega,G,\mu)$)	
+	\end{center}
 }
 %------------------------------------------------------------------------------------------------
 
@@ -323,169 +412,34 @@
 	\item First: introduce the higher analague of a "regular value" for the higher comomentum map.
 	\item The notion of $G$-equivariant covariant moment map turns out to be the right prerequisite for reduction in the multisymplectic setting. Somewhat surprisingly, this is true, even for the ($L_\infty$-)algebraic reduction, where one might expect homotopy moment maps, which directly interact with the involved $L_\infty$-structures to play a role.
 	\item pre-$n$-plectic means closed and possibly degenerate.
+	\item {Multisymplectic Reduction} takes Two inputs:
+	\\1. Hamiltonian $G$-space $(M,\omega,{\color{orange}G},{\color{blue}\mu})$
+	\\2. parameter ${\color{blue}\phi}\in\Omega^{k-1}(M,\g^*)$ with $\d\phi=0$
+	\item 
+	The \emph{reduced space} is $M_\phi:={\color{blue}\mu^{-1}(\phi)}{\color{orange}/G_\phi}$
+	\item THM:
+		If $\mu^{-1}(\phi)\subset M$ is smooth and $G_\phi\curvearrowright\mu^{-1}(\phi)$ is free and proper, then there is a \textbf{unique closed $(k+1)$-form} $\omega_\phi$ on $M_\phi$ such that $\pi^*\omega_\phi = i^*\omega$.
+	\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\node[blue] (A) at (0,0) {$\mu^{-1}(\phi)$};
+		\node[gray] (A1) at (0,.3) {$i^*\omega$};
+		\node[gray] (A2) at (-.6,0) {$\pi^*\omega_\phi$};
+		\node[blue] (B) at (1,0) {$M$};
+		\node[gray] (B1) at (1,.3) {$\omega$};
+		\node[orange] (C) at (0,-.8) {$M_\phi$};
+		\node[gray] (C2) at (-.6,-.8) {$\omega_\phi$};
+
+		\path[right hook->,blue] (A) edge node[above] {$i$} (B);
+		\path[->,orange] (A) edge node[left] {$\pi$} (C);
+
+		\begin{scope}[xshift=-2cm]
+			\node[blue] at (0,0) {\small restrict to $\{\mu=\phi\}$};
+			\node[orange] at (.15,-.6) {\small quotient by $G_\phi$};
+		\end{scope}
+	\end{tikzpicture}
+	\end{center}
+	
 }
 %------------------------------------------------------------------------------------------------
-
-
-%------------------------------------------------------------------------------------------------
-% Frame inspired by Leonid: passing from moment maps to comoment maps
-\begin{frame}[fragile]{Reminder: Moment maps in symplectic geometry}
-	Let $(M,\omega)$ be a symplectic manifold, $\vartheta: G\times M \to M$ a Lie group action preserving $\omega$ and $v:\mathfrak{g}\to \mathfrak{X}(M)$ the corresponding infinitesimal action
-	%
-		\begin{defblock}[Moment map pertaining to $\vartheta$]
-			Smooth map $ \mu: M \to \mathfrak{g}^\ast$ such that: \stackunder{$d \langle\mu , \xi \rangle = \iota_{v_\xi}\omega \scriptstyle\quad \forall \xi \in \mathfrak{g}$}{$f (\vartheta_g(x)) = Ad^\ast_g (f(x)) \scriptstyle\quad \forall g \in G, x \in M$}
-		\end{defblock}
-	%
-	\vfill
-	\emph{... from a dual perspective (assuming $G$ connected) ...}
-			\begin{defblock}[Comoment map pertaining to $v$]
-				\begin{columns}
-					\begin{column}{.5\linewidth}	
-			Lie algebra morphism \qquad $ f: \mathfrak{g} \to C^\infty(M) $
-			\\
-			such that \qquad $ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$
-					\end{column}
-					\begin{column}{.4\linewidth}	
-						\begin{displaymath}
-							\begin{tikzcd}
-								& C^{\infty}(M,\omega) \ar[d]
-								\\
-								\mathfrak{g} \ar[ur,dashed,"(f)"]\ar[r,"v"']& \mathfrak{X}(M)
-							\end{tikzcd}	
-						\end{displaymath}
-					\end{column}
-				\end{columns}
-		\end{defblock}		
-	%
-	\vfill
-	\emph{... a tool encoding conserved quantities ...}
-	\begin{propblock}[Noether Theorem]
-		\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
-				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
-	\end{propblock}
-\end{frame}
-\note[itemize]{
-	\item comoment map is a Lie algebra morphism projecting to $v$. (Triangle diagram in Lie algebra category).
-}
-
-
-
-%------------------------------------------------------------------------------------------------
-\begin{frame}{Geometry of symmetries}\label{frame:geometrysymmetries}
-	Basic mechanical structures are encoded in geometry. but there is another complementary geometrical property that's natural in physics: symmetry!
-	\begin{alertblock}{Upshot}
-		Continous symmetries are described by actions of a Lie group on $M$.
-	\end{alertblock}
-	\begin{block}{Noether}
-		Presence of symmetries $\quad \Rightarrow \quad$ existence of conserved quantities.
-	\end{block}	
-	\begin{block}{Key concept:}
-		Noether current are encoded in a \emph{moment map}  $\mu :M \rightarrow \mathfrak{g}^*$ (the dual of the comoment map $f$. 
-	\end{block}
-  \begin{columns}[T]
-   	\begin{column}{.6\textwidth}
-			\begin{block}{Symplectic reduction:}
-			\begin{itemize}
-				\item System dynamics should be restricted to level set of conserved observables in order to efficiently store dynamical properties.
-				\item Under certain assumptions, $\mu^{-1}( 0 )/G$ is a symplectic manifold with an "induced" symplectic structure.
-			\end{itemize}
-			\end{block}
-    \end{column}
-    \begin{column}{.4\textwidth}	
-			\includegraphics[width=\textwidth]{Pictures/Reduction} 
-  	\end{column}
-	\end{columns}			
-\end{frame}
-\note{
-}
-%------------------------------------------------------------------------------------------------
-
-
-
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}{Research proposal context: (multi)symplectic reduction}
-
-
-
-\end{frame}
-\note{
-}
-%---------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-\begin{frame}[t]{Symmetries in \textbf{multisymplectic geometry}}
-	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  preserving the $n$-plectic form $\omega$,
-	\vfill
-
-	\vspace{-1em}
-	\begin{columns}[T]
-		\setlength{\belowdisplayskip}{5pt}
-		\begin{column}{.50\linewidth}
-			%
-			\centering \it
-			\onslide<2->{
-				$-$ symplectic case $-$
-				\begin{defblock}[Comoment map pertaining to $v$]
-					Lie algebra morphism
-					$$ f: \mathfrak{g} \to C^\infty(M) $$
-					such that
-					$$ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
-				\end{defblock}
-			}
-		\end{column}	
-		%
-		\onslide<2->{\vrule{}}
-		%
-		\begin{column}{.50\linewidth}
-			\centering \it
-			\onslide<3->{			
-				$-$ $n$-plectic case $-$
-				\begin{defblock}[Homotopy comoment map \tiny (HCMM)]
-					$L_\infty$-morphism 
-					$$ (f_k) : \mathfrak{g} \to L_\infty (M,\omega)$$
-					such that
-					$$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
-				\end{defblock}	
-			}
-		\end{column}	
-	\end{columns}	
-	%
-	\pause
-	\vfill
-	\centering 
-	\onslide<4->{\textbf{-- Conserved quantities --}}
-	%
-	\vspace{-.5em}
-	\begin{columns}[T]
-		\setlength{\belowdisplayskip}{5pt}
-		\begin{column}{.50\linewidth}
-			%
-			\centering \it
-			\onslide<4->{
-			\begin{propblock}[Noether Theorem]
-				\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
-				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
-			\end{propblock}
-			}
-		\end{column}	
-		%
-		\onslide<5->{\vrule{}}
-		%
-		\begin{column}{.50\linewidth}
-			\centering \it
-			\onslide<5->{			
-			\begin{propblock}[RWZ16 Theorem]
-				\small Fixed $H\in \Omega^{n-1}_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant),
-				$$\mathcal{L}_{v_H} f_k(p) \in B^k(M) \qquad \forall p \in Z_k(\mathfrak{g})$$			
-			\end{propblock}
-			}
-		\end{column}	
-	\end{columns}		
-\end{frame}
-\note{
-}
-%-------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 \end{document}
