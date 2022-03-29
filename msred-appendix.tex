@@ -188,6 +188,216 @@
 
 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[t]{Symmetries in \textbf{multisymplectic geometry}}
+	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  preserving the $n$-plectic form $\omega$,
+	\vfill
+
+	\vspace{-1em}
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\centering \it
+			\onslide<2->{
+				$-$ symplectic case $-$
+				\begin{defblock}[Comoment map pertaining to $v$]
+					Lie algebra morphism
+					$$ f: \mathfrak{g} \to C^\infty(M) $$
+					such that
+					$$ d~f (x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
+				\end{defblock}
+			}
+		\end{column}	
+		%
+		\onslide<2->{\vrule{}}
+		%
+		\begin{column}{.50\linewidth}
+			\centering \it
+			\onslide<3->{			
+				$-$ $n$-plectic case $-$
+				\begin{defblock}[Homotopy comoment map \tiny (HCMM)]
+					$L_\infty$-morphism 
+					$$ (f_k) : \mathfrak{g} \to L_\infty (M,\omega)$$
+					such that
+					$$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$$
+				\end{defblock}	
+			}
+		\end{column}	
+	\end{columns}	
+	%
+	\pause
+	\vfill
+	\centering 
+	\onslide<4->{\textbf{-- Conserved quantities --}}
+	%
+	\vspace{-.5em}
+	\begin{columns}[T]
+		\setlength{\belowdisplayskip}{5pt}
+		\begin{column}{.50\linewidth}
+			%
+			\centering \it
+			\onslide<4->{
+			\begin{propblock}[Noether Theorem]
+				\small Fixed $H\in C^\infty_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant) ,
+				$$\mathcal{L}_{v_H} f(x) = 0 \qquad \forall x \in \mathfrak{g}$$
+			\end{propblock}
+			}
+		\end{column}	
+		%
+		\onslide<5->{\vrule{}}
+		%
+		\begin{column}{.50\linewidth}
+			\centering \it
+			\onslide<5->{			
+			\begin{propblock}[RWZ16 Theorem]
+				\small Fixed $H\in \Omega^{n-1}_{\text{Ham}}(M)$ ($\mathfrak{g}$-invariant),
+				$$\mathcal{L}_{v_H} f_k(p) \in B^k(M) \qquad \forall p \in Z_k(\mathfrak{g})$$			
+			\end{propblock}
+			}
+		\end{column}	
+	\end{columns}		
+\end{frame}
+\note{
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Homotopy comomentum maps}\label{frame:hcmm-main}
+\begin{frame}[fragile]{Homotopy comomentum maps}
+	Consider a Lie algebra action $v:\mathfrak{g} \to \mathfrak{X}(M)$  \underline{preserving the $n$-plectic form $\omega$}.
+	\vfill
+	\begin{defblock}[Homotopy comomentum map \emph{(Callies, Fregier, Rogers, Zambon)}]
+		\ifHandout
+			\includestandalone{Pictures/Figure_Lifting}
+		\else
+			\includestandalone{Pictures/Frame_Lifting}
+		\fi					
+	\end{defblock}
+	\onslide<4->{
+	\begin{lemblock}[HCMM unfolded  (CFRZ16)]
+			%
+			HCMM is a sequence of (graded-skew) multilinear maps:
+			\begin{displaymath}
+				(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L^{1-k} \subseteq \Omega^{n-k}(M) 
+				~\big\vert~ 0\leq k \leq n+1  \big\rbrace
+			\end{displaymath}
+			\emph{fulfilling:}%\emph{such that:}
+			\begin{itemize}
+				\item<5-> $f_0 = 0 $, $f_{n+1} = 0$
+				\item<6-> $d f_k (p) = f_{k-1} (
+				\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=green!5,draw=green!30,anchor=base]            
+            			(target) {$\partial $ };
+            	}				
+				p)  - (-1)^{\frac{k(k+1)}{2}} \iota(v_p) \omega 
+				\qquad\scriptstyle \forall p \in \Lambda^k(\mathfrak{g}),\; \forall k=1,\dots n+1$
+			\end{itemize}
+		\onslide<7->{
+			\tikz[overlay,remember picture]
+			{
+				\node[rounded corners,
+	                 draw=green!30,anchor=base]            
+	            	 (base) at ($(current page.east)-(3,3)$) [rotate=-0,align=center] {\footnotesize{\hyperlink{frame:CE-complex}{\emph{Chevalley-Eilenberg boundary op.}}}};
+			}	
+		\begin{tikzpicture}[overlay,remember picture]
+	    	\path[->] (base.west) edge[bend right,green](target.north east);
+	    \end{tikzpicture}
+	    }
+	\end{lemblock}	
+	}
+	\vfill
+\end{frame}
+\note[itemize]{
+	\item  An infinitesimal symmetry is a lie algebra morphism such that $\mathcal{L}_{v_x} \omega = 0 ~ \forall x \in \mathfrak{g}$.
+	\\ (It is also call an infinitesimal multisymplectic action and $v_x$ is the infinitesimal generator of the action, corresponding to $x \in \mathfrak g$.) 
+	\item Essentially, admitting a comoment maps mean that $v$ acts via Hamiltonian vector fields.
+	\item In mechanical terms, a moment map is a tool associated with a Hamiltonian action of a Lie group on a symplectic manifold, used to construct conserved quantities for the action.(see \ref{frame:HCMMandConserved} in appendix.
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink]{Homotopy co-moment maps \emph{(Callies, Fregier, Rogers, Zambon)}}
+	\begin{columns}
+		\begin{column}{.625\linewidth}	
+			HCMM is an $L_\infty$-morphism  $\quad(f):\mathfrak{g}\to L_\infty(M,\omega)$
+			\\[.5em]
+			 lifting the  infinitesimal action $\quad v:\mathfrak{g}\to \mathfrak{X}(M)$
+		\end{column}
+		\begin{column}{.325\linewidth}	
+			\begin{displaymath}
+				\begin{tikzcd}[column sep = large]
+					& L_{\infty}(M,\omega) \ar[d,"\mathscr{v}"]
+					\\
+					\mathfrak{g} \ar[ur,dashed,"(f)"]\ar[r,"v"']& \mathfrak{X}(M)
+				\end{tikzcd}	
+			\end{displaymath}		
+		\end{column}
+	\end{columns}
+	\pause
+	\begin{lemblock}[HCMM unfolded  \cite{Callies2016}]
+			%
+			HCMM is a sequence of (graded-skew) multilinear maps:
+			\begin{displaymath}
+				(f)  = \big\lbrace f_k: \; \Lambda^k{\mathfrak g} \to L_{k-1} \subseteq \Omega^{n-k} 
+				\;\big\vert\; 0\leq k \leq n+1  \big\rbrace
+			\end{displaymath}
+			%
+			\vspace{-.5em}	
+			\includestandalone[width=0.9\textwidth]{Pictures/Frame_HCMM}
+			
+			\vspace{-1em}		
+			\emph{fulfilling:}%\emph{such that:}
+			\begin{itemize}
+				\item<2-> $f_0 = 0 $, $f_{n+1} = 0$
+				\item<3-> $d f_k (p) = f_{k-1} (\partial p)  - (-1)^{\frac{k(k+1)}{2}} \iota(v_p) \omega 
+				\qquad\scriptstyle \forall p \in \Lambda^k(\mathfrak{g}),\; \forall k=1,\dots n+1$
+			\end{itemize}
+		\end{lemblock}
+
+	\begin{tamblock}
+	 Practically a HCMM is given by several multilinear maps
+	 \begin{displaymath}
+	 	f_i = \Lambda^i \mathfrak{g} \to L_{i-1}
+	 \end{displaymath}
+	 satisfying:
+	 \begin{enumerate}
+	 	\item $ d f_1(\xi) = - \iota_{v_\xi} \omega$
+	 	\item $\sum ...$
+	 \end{enumerate}
+	\end{tamblock}
+
+
+\end{frame}
+\note[itemize]{
+	%\item 		Consider:  $v:\mathfrak g\to \mathfrak X(M)$  a Lie algebra morphism  s.t. $\mathcal{L}_{v_x}\omega=0 \quad  \forall x\in\mathfrak g$ (i.e infinitesimal multisymplectic Lie algebra action $\mathfrak{g}\circlearrowleft (M,\omega)$)
+	\item More conceptually, a comoment is an $L_\infty$-morphism $(f):\mathfrak{g}\to L_\infty(M,\omega)$ lifting the action $v:\mathfrak{g}\to \mathfrak{X}(M)$, 
+i.e. making the diagram commute in the $L_\infty$-algebras category.
+	\item The vertical arrow is the trivial $L_\infty$-extension of the function mapping any Hamiltonian form to the unique corresponding Hamiltonian vector field (an it is zero elsewhere)
+		\\
+		(Note that any Lie algebra can be seen as an $L_\infty$-algebra concentrated in degree $0$, therefore any $L_\infty$-morphism $L\to\mathfrak{g}$ is simply given by a linear map $L_0 \to \mathfrak{g}$ preserving the binary brackets.)
+	\item We will make use of an explicit version of this definition which is expressed by the lemma.
+	 Practically speaking, a HCMM is given by several multilinear maps ...
+	 \item In the equation we have tacitly set $\Lambda^{-1}(M) = 0$
+	 %\item Notation: \qquad $\partial =$ Chevalley-Eilenberg boundary operator.
+	%\item Notice that a HCMM pertains to an "infinitesimal" action of ${\mathfrak g}$ on $M$ with ${\mathfrak g}$ being the Lie algebra of a generic Lie group $G$, acting on $M$ by $\omega$-preserving vector fields.
+		\item (Notation) $ p = \xi_1 \wedge \xi_2 \wedge \dots \wedge \xi_k$, 
+			then $v_p = v_1 \wedge v_2 \wedge \dots \wedge v_k$ 
+			where $v_i \equiv v_{\xi_i}$ are the fundamental vector fields associated to the action $G \circlearrowright M$.
+	%	\item (Notation) $\iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
+	%	\item $\varsigma(k) := - (-1)^{\frac{k(k+1)}{2}}$ 
+		\item (Notation) $(\iota^{k}_{\mathfrak{g}}\omega)(p):= \iota(v_p) \omega = \iota(v_k)\dots\iota(v_1) \omega$
+		\item $\partial \equiv \partial_k:  \Lambda^{k} {\mathfrak g} \to \Lambda^{k-1} {\mathfrak g}$  is the usual Eilenberg-Chevalley complex boundary operator (see appendix, pag: \ref{frame:CE-complex});
+%		\item The definition tells us that the {\it closed} forms
+%			$$\mu_k := f_{k-1} (\partial p) +  \varsigma(k) \iota(v_p) \omega 	$$
+%			must actually be {\it exact}, with potential $-f_k(p)$.  	
+		\item The last equation tells us that an HCMM is not a chain complex morphism but is rather a chain complex homotopy between 0 and the multicontraction $\alpha=(\iota^{k}_{\mathfrak{g}}\omega)$ (see next slide).
+		is a chain map by lemma 2.18 \cite{Ryvkin2016}).
+}
+%---------------------------------------------------------------------------------------------------------------------------------
+
+
 
 %------------------------------------------------------------------------------------------------
 \end{document}

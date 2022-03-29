@@ -16,6 +16,7 @@
 	
 %- Packages ----------------------------------------------------------------------------------------------
 \usepackage{custom-style}
+\usepackage{math}
 \usetikzlibrary{positioning}
 \usepackage{multicol}
 
@@ -106,9 +107,30 @@
         \path[->,draw=red!40] (s4) edge [bend right] (t4);
 	\end{tikzpicture}
 
+	\vfill
+	\onslide<5->{
+	\begin{block}{Based on:}
+		 \emph{ \small
+			 Blacker, M, Ryvkin;
+			\textbf{Reduction of $L_\infty$-algebra of observables on multisymplectic manifolds}; 
+			in preparation.
+		}
+	\end{block}
+	}
+
 \end{frame}
 \note[itemize]{
 	\item Provide a vague idea of the words that make up the title.
+	\item
+	\item Conventions:
+	\\- $M$ and $G$ are connected,
+	\\- actions $\theta:G \curvearrowright M$ are always smooth
+	\\- $\xi,\eta\in\g$,
+	\\- for $\mu\in\Omega^*(M,\g^*)$ and $\xi\in\g$, write
+			\[
+				\mu_\xi := \langle\mu,\xi\rangle \;{\color{black!50}\in\Omega^*(M)}
+			\]
+			for the ``$\xi$th component'' of $\mu$.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -162,20 +184,20 @@
 		\vspace{.5em}
 		\pause
 		\begin{defblock}[Hamiltonian vector fields]
-			$v_f \in \mathfrak{X}(M)$ such that:
-			$$\iota_{v_f} \omega = -df \quad \text{(exact)}$$ %$\in B^1(M)$
-			\small$v_f$ = \emph{Ham.v.f. pertaining to $f\in C^\infty(M)$}.
+			$\vHam_f \in \mathfrak{X}(M)$ such that:
+			$$\iota_{\vHam_f} \omega = -df \quad \text{(exact)}$$ %$\in B^1(M)$
+			\small$\vHam_f$ = \emph{Ham.v.f. pertaining to $f\in C^\infty(M)$}.
 		\end{defblock}
 		%
 		\begin{defblock}[Poisson Algebra of Observables]
 			$C^\infty(M)$ is a Poisson algebra with
-			$$\{f,g\} = \iota_{v_g} \iota_{v_f} \omega = \omega(v_f,v_g) ~.$$
+			$$\{f,g\} = \iota_{\vHam_g} \iota_{\vHam_f} \omega = \omega(\vHam_f,\vHam_g) ~.$$
 		\end{defblock}
 		%
 		\pause
 		\vspace{.8em}
 		\centering
-		\textit{ based on the notion of \\"meaurable quantities".}						
+		\textit{ based on the notion of \\"measurable quantities".}						
 	\end{column}
 \end{columns}
 \end{frame}

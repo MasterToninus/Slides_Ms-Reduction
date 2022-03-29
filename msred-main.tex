@@ -11,7 +11,7 @@
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
 	\newif\ifHandout
-	%\Handouttrue  %uncomment for the printable version
+	\Handouttrue  %uncomment for the printable version
 	%Handling of flags it is not preserved when passing to standalone-subfiles!
 
 
@@ -165,7 +165,7 @@ Sniaticki and Weinstein have further extended this result to encompass singular 
 					red, 
 					minimum height=6em,
 					minimum width=14em,
-					callout relative pointer={(-4,-.5)}
+					callout relative pointer={(-2.25,-.15)}
 			] (base1) at ($(current page.north east)-(3,2.25)$) {};
 			\node
             	 [rotate=-0,
@@ -174,7 +174,7 @@ Sniaticki and Weinstein have further extended this result to encompass singular 
             	 color=black] 
             	 (text) at (base1)
             	 {
-	            	 Review of the  multisym. geometry basics.
+	            	 Review the basics of multisym. geometry.
             	 };
 
 			\node[draw,
@@ -182,7 +182,7 @@ Sniaticki and Weinstein have further extended this result to encompass singular 
 					red, 
 					minimum height=6em,
 					minimum width=14em,
-					callout relative pointer={(-.5,-.5)}
+					callout relative pointer={(-.5,-.05)}
 			] (base2) at ($(current page.east)-(3,0)$) {};
 			\node
             	 [rotate=-0,
@@ -199,7 +199,7 @@ Sniaticki and Weinstein have further extended this result to encompass singular 
 					red, 
 					minimum height=6em,
 					minimum width=14em,
-					callout relative pointer={(-.5,-.5)}
+					callout relative pointer={(-2.25,.4)}
 			] (base3) at ($(current page.east)-(3,3)$) {};
 			\node
             	 [rotate=-0,
@@ -236,7 +236,7 @@ Sniaticki and Weinstein have further extended this result to encompass singular 
 	\input{msred-regular}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\section{Homotopy comomentum maps and singular reduction}
+\section{Algebraic singular reduction}
 \checkpoint	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 	\input{msred-singular}

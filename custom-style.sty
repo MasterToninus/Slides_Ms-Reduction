@@ -90,7 +90,11 @@
 %Intermediate checkpoint slide
 \newcommand{\checkpoint}[0]{
 	\ifHandout
-
+ 	\begin{frame}{Outline}
+  		%\tableofcontents[currentsection,currentsubsection]
+  		\tableofcontents[currentsection]
+	\end{frame}
+	\note{}
 	\else
 	\setcounter{tocdepth}{2}
 	\addtocounter{framenumber}{-1}

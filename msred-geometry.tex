@@ -37,7 +37,7 @@
 \subsection{Multisymplectic manifolds}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{frame}[fragile]{Multisymplectic manifolds} %Fragile -->workaround tikzcd
-	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)}]
+	\begin{defblock}[$n$-plectic manifold ~\emph{(Cantrijn, Ibort, De Le\'on)} \cite{Cantrun2017}]
 		\includestandalone[width=0.95\textwidth]{Pictures/Figure_multisym}	
 	\end{defblock}
 	%
@@ -132,7 +132,7 @@
 		\begin{column}[t]{.5\linewidth}	
 			\centering\emph{Global symmetries}
 			\begin{defblock}[Multisym. (Lie group) action]
-				Smooth action $\Phi: G \curvearrowright (M, \omega)$ s.t. 
+				Smooth action $\theta: G \curvearrowright (M, \omega)$ s.t. 
 				$$(\Phi_g)_\ast \omega = \omega \qquad \forall g \in G~.$$
 			\end{defblock}
 		\end{column}
@@ -140,8 +140,8 @@
 			\centering\emph{Infinitesimal symmetries}
 			\begin{defblock}[Multisym. (Lie algebra) action]
 				Lie algebra hom.
-				$\vAct: \mathfrak{g} \rightarrow \mathfrak{X} (M)$  s.t.
-				$$\mathcal{L}_{\vAct_\xi} \omega = 0 \qquad \forall \xi \in \mathfrak{g}~.$$	
+				$\underline{\,\cdot\,}: \mathfrak{g} \rightarrow \mathfrak{X} (M)$  s.t.
+				$$\mathcal{L}_{\underline{\xi}} \omega = 0 \qquad \forall \xi \in \mathfrak{g}~.$$	
 			\end{defblock}
 		\end{column}
   	\end{columns}
@@ -173,7 +173,7 @@
   	\item The idea to consider forms of various degree as observables do not fall out of the sky. 
   		For instance in a string there will be two kind of measurable quantities: extensive observable (1-forms), like the density, and intensive observables (0-forms), like the tension. 
  		%\href{https://en.wikipedia.org/wiki/Intensive_and_extensive_properties#Intensive_properties}{(wiki link on this terminology)}
-  	\item Starting from this observation we can define the space of all possible observables (see next slide).
+  	\item Starting from this observation we can define the space of all possible observables.
   }
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -257,7 +257,8 @@
 				~ \mathcal{L}_{\vHam_1} \sigma_2
 				~.					
 			\end{displaymath}		
-				can be "completed" to a \\ DG-Leibniz algebra.
+				%can be "completed" to a \\ DG-Leibniz algebra.
+				forms a Leibniz algebra.
 			\end{thmblock}	
 			%
 			\pause
@@ -299,8 +300,7 @@
   [\sigma_1,\sigma_2]_\omega
  \end{align*}
  where the last bracket is given by the Higher Courant bracket.
- \item Take away: Two brackets on $\Omega_H^{k-1}(M)$, ${\color{red}\llbracket\alpha,\beta\rrbracket = \mathcal{L}_{X_\alpha} \beta}$ and ${\color{green}\{\alpha,\beta\}=\iota_{X_\alpha}\d\beta}$,
-	Equal up to a coboundary: ${\color{red}\mathcal{L}_{X_\alpha}\beta} = {\color{green}\iota_{X_\alpha}\d\beta} + \d\hspace{1pt}\iota_{X_\alpha}\beta$
+ 
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -311,9 +311,13 @@
 \subsection{$L_\infty$-algebra of Observables}
 \begin{frame}[fragile,t]{$L_\infty$-algebra of Observables (higher observables) }
 	Let be $(M,\omega)$ a $n$-plectic manifold.
-	\begin{defblock}[$L_\infty$-algebra of observables ~\emph{(Rogers)}]
-		\hspace{.25em} Is a cochain-complex $(L,\{\cdot\}_1)$ \\
-		\vspace{-2.5em}
+	\begin{defblock}[$L_\infty$-algebra of observables ~\emph{(Rogers)} ~\cite{Rogers2010}]
+		
+		\hspace{.25em} $L\infty(M,\omega)$ is given by:
+		
+		\begin{itemize}
+			\item[•] a cochain-complex $(L,\{\cdot\}_1)$ 
+		\end{itemize}
 		\begin{center}
 		\ifHandout
 			\includestandalone{Pictures/Figure_Observables}	
@@ -322,8 +326,9 @@
 		\fi				
 		\end{center}
 		\onslide<2->{
-			\hspace{.25em} with $n$ (skew-symmetric) multibrackets $(2 \leq k \leq n+1)$\\
-			\vspace{-1.5em}
+			\begin{itemize}
+				\item[•] with $n$ (skew-symmetric) multibrackets $(2 \leq k \leq n+1)$
+			\end{itemize}
 			\begin{center}
 				\includestandalone{Pictures/Equation_Multibracket}	
 			\end{center}
@@ -356,7 +361,7 @@
 		}
 		\\
 		\vspace{.5em}
-		\begin{defblock}[$L_\infty$-algebra \emph{(Lada, Stasheff)}]
+		\begin{defblock}[$L_\infty$-algebra ~\emph{(Lada, Markl)} ~\cite{Lada1995}]
 			\includestandalone{Pictures/Figure_Linfinitydef}
 		\end{defblock}	
 		%
@@ -365,7 +370,7 @@
 	\vfill
 	\begin{thmblock}[Rogers \cite{Rogers2010}]
 		The \emph{higher observable algebra} $L_{\infty}(M,\omega)$ 	forms an honest $L_\infty$ algebra.
-		\footnotetext{ Take $\mu_1 = \text{d}$, $L$ is a shifted truncation of the de Rham complex.}
+		\footnotetext{ Take $\mu_1 = \text{d}$, $\mu_k=\lbrace\dots\rbrace_k$, $L$ is a shifted truncation of the de Rham complex.}
 	\end{thmblock}
 \end{frame}
 \note[itemize]{
@@ -394,11 +399,35 @@
 \subsection{Leibniz-algebra of Observables}
 \begin{frame}[fragile,t]{Leibniz-algebra of Observables}
 
+	\begin{defblock}[Leibniz algebra of observables]
+		\hspace{.25em} $Leib(M,\omega)$ is given by:
+		\begin{itemize}
+			\item[•] the vector space $$\Omega_{ham}^{n-1}(M,\omega)$$
+			\item[•] with the binary bracket 
+			\begin{center}
+				\includestandalone{Pictures/Equation_Leibbracket}	
+			\end{center}
+		\end{itemize}	
+	\end{defblock}
+	\vfill
+	\pause
+	%
+	\begin{propblock}
+		\begin{itemize}
+			\item[i.] $\vHam_{\llbracket \alpha, \beta \rrbracket} = [\vHam_\alpha,\vHam_\beta]$
+			\item[ii.] $\llbracket \sigma, \llbracket \alpha, \beta \rrbracket \rrbracket = 
+			\llbracket\llbracket \sigma, \alpha \rrbracket, \beta \rrbracket
+			+
+			\llbracket \alpha, \llbracket \sigma, \beta \rrbracket \rrbracket$
+		\end{itemize}
+	\end{propblock}
 
 \end{frame}
 \note[itemize]{
 	\item in addition to being extendable to an $L_\infty$-algebra, the space $\Omega^{n-1}_{ham}(M)$ also carries the structure of a Leibniz algebra. This structure is very important for multisymplectic reduction procedures.
 	\item 
+	\item Take away: Two brackets on $\Omega_H^{k-1}(M)$, ${\color{red}\llbracket\alpha,\beta\rrbracket = \mathcal{L}_{X_\alpha} \beta}$ and ${\color{green}\{\alpha,\beta\}=\iota_{X_\alpha}\d\beta}$,
+	Equal up to a coboundary: ${\color{red}\mathcal{L}_{X_\alpha}\beta} = {\color{green}\iota_{X_\alpha}\d\beta} + \d\hspace{1pt}\iota_{X_\alpha}\beta$
 }
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
