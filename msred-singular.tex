@@ -32,6 +32,13 @@
 \def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
 \makeatother
 
+\newcommand{\fgmodule}{\mathfrak{X}_{\g}}
+\newcommand{\tgtvanform}{I_{\Omega}(N)}
+\newcommand{\tgtvf}{\mathfrak X_N(M)}
+\newcommand{\vanvf}{I_{\mathfrak{X}}(N)}%{I_N^{\mathfrak X}}
+\newcommand{\Ham}{\mathsf{Ham}}
+\renewcommand{\ham}{\text{ham}}
+
 \begin{document}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -269,7 +276,42 @@
 
 \end{frame}
 \note[itemize]{
- \item
+ \item The graded vector space underlying the reduced $L_\infty$-algebra $\Ham_\infty(M,\omega)_N$ is explicitly given by
+\begin{displaymath}
+	\Ham_\infty(M,\omega)_N =
+	\frac{
+		\left\lbrace
+			(\alpha,v) \in \Omega(M){[n{-}1]}\oplus\X(M)
+		~\left\vert~
+			\begin{array}{l l}
+				\iota_v \omega = -\d \alpha^{(0)} &
+				\\
+				\iota_\xi \alpha \in I_{\Omega}(N) &
+				\\
+				\L_\xi\alpha \in I_{\Omega}(N)
+				&
+				\\
+				\L_\xi v \in \fgmodule +\vanvf
+				&~\forall \xi \in \g 
+				\\
+				v \in \X_N(M)
+				&
+			\end{array}
+		\right.
+		\right\rbrace
+	}{
+		\left\lbrace
+			(\alpha,v) \in \Omega(M){[n{-}1]}\oplus\X(M)
+		~\left\vert~
+			\begin{array}{l}
+				\alpha \in I_{\Omega}(N)
+				\\
+				v \in \fgmodule +\vanvf
+			\end{array}
+		\right.
+		\right\rbrace
+	}~.
+\end{displaymath}
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
