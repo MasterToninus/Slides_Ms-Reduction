@@ -1,0 +1,120 @@
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
+
+%- D0cum3nt ----------------------------------------------------------------------------------------------
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+
+\ifHandout
+	\setbeameroption{show notes} %print notes   
+\fi
+
+	
+%- Packages ----------------------------------------------------------------------------------------------
+\usepackage{custom-style}
+\usepackage{math}
+\usetikzlibrary{positioning}
+\usepackage{multicol}
+\usepackage{xfrac}
+
+%--Beamer Style-----------------------------------------------------------------------------------------------
+\usetheme{toninus}
+\usepackage{animate}
+\usetikzlibrary{positioning, arrows}
+\usetikzlibrary{shapes}
+
+\renewcommand{\action}{\curvearrowright} 
+\makeatletter
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+\newcommand{\fgmodule}{\mathfrak{X}_{\g}}
+\newcommand{\tgtvanform}{I_{\Omega}(N)}
+\newcommand{\tgtvf}{\mathfrak X_N(M)}
+\newcommand{\vanvf}{I_{\mathfrak{X}}(N)}%{I_N^{\mathfrak X}}
+\newcommand{\Ham}{\mathsf{Ham}}
+\renewcommand{\ham}{\text{ham}}
+
+\begin{document}
+
+Parti aggiunte all'ultimo per il talk a Brescia.
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}{Singular reduction} %BRESCIA VERSION
+	Assume $\omega$ \emph{reducible} w.r.t. $G\action M$ and $N$, i.e.
+	\begin{displaymath}
+			\begin{array}{l l l r}
+				\underline{\xi} \in \mathfrak{X}(M)_N ~,&
+				\mathcal{L}_{\underline{\xi}} \omega \in I_\Omega ~,&
+				\iota_{\underline{\xi}} \omega \in I_\Omega & 
+				\tiny
+				(\forall \xi \in \mathfrak{g})
+			\end{array}
+	\end{displaymath}
+
+	%
+	\pause
+	%
+	\begin{defpropblock}[Reduced Leibniz algebra of observables]
+\[
+	Leib(M,\omega)_N =
+	\frac{
+		\left\lbrace
+			\alpha \in \Omega_{ham}^{n{-}1}(M)
+		~\left\vert~
+			\onslide<3->{
+			\begin{array}{l l}
+				\iota_{\underline \xi} \alpha \in I_{\Omega}(N) &
+				\\
+				\L_{\underline \xi} \alpha \in I_{\Omega}(N)
+				&
+				\\
+				\L_{\underline \xi} v_\alpha \in \fgmodule +\vanvf
+				&~\forall \xi \in \g 
+				\\
+				v_\alpha \in \X_N(M)
+				&
+			\end{array}
+			}
+		\right.
+		\right\rbrace
+	}{
+		\left\lbrace
+			\alpha \in \Omega_{ham}^{n{-}1}(M)
+		~\left\vert~
+			\begin{array}{l}
+				\alpha \in I_{\Omega}(N)
+				\\
+				v_\alpha \in \fgmodule +\vanvf
+			\end{array}
+		\right.
+		\right\rbrace
+	}~.
+\]
+
+	\end{defpropblock}
+	%
+	\onslide<4->{
+	%
+	\begin{thmblock}[Singular red. is compatible with regular red.]
+		Let be $G\action M$ hamiltonian, $\mu$ a moment map and $N=\mu^{-1}(\phi)$ a submanifold.
+		\\
+		Then:
+		$$ Leib\left(\frac{N}{G_\phi},\omega_\phi\right) \cong Leib(M,\omega)_N~.$$
+	\end{thmblock}
+	}
+\end{frame}
+\note[itemize]{
+	\item
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+\end{document}
+
