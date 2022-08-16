@@ -12,7 +12,7 @@ Sniaticki and Weinstein have further extended this result to encompass singular 
 
 The scope of this talk is to review some relevant algebraic structures related to multisymplectic manifolds, namely the higher version of the observables algebra and moment maps, and discuss how the regular and singular reduction schemes extend to the multisymplectic framework.
 
-This talk is based on ongoing joint work with Casey Blacker and Leonid Ryvkin
+This talk is based on ongoing joint work with Casey Blacker and Leonid Ryvkin.
 
 
 
