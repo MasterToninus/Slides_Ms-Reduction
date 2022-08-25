@@ -37,7 +37,7 @@
 \tikzstyle{every picture}+=[remember picture]
 	\begin{columns}
     	\begin{column}{.45\textwidth}
-    		\onslide<3->{
+    		\onslide<4->{
 			\tikz[baseline]{
 		            \node[draw=orange!40,anchor=base,text width=5cm] (s1)
 		            {Group of transformations preserving the prescribed geometric structures.};
@@ -45,7 +45,7 @@
 		}
 	\end{column}
     	\begin{column}{.45\textwidth}
-    		\onslide<4->{
+    		\onslide<5->{
 			 \tikz[baseline]{
 		            \node[draw=blue!40,anchor=base, text width=5cm] (s2)
 		            {Procedure providing another manifold of reduced dimension encoding the relevant geometrical information.};
@@ -85,7 +85,7 @@
 
 	\begin{columns}
     	\begin{column}{.45\textwidth}
-    		\onslide<2->{
+    		\onslide<3->{
 	 		 \tikz[baseline]{
 	            \node[draw=green!40,anchor=base,text width=5cm] (s3)
 	            {A certain higher version \\(involving differential forms in degree $\geq 2$)};
@@ -93,22 +93,24 @@
 		}		   	
 		\end{column}
     	\begin{column}{.45\textwidth}
-		\tikz[baseline]{
+    		\onslide<2->{
+				\tikz[baseline]{
 	            \node[draw=red!40,anchor=base,text width=5cm] (s4)
 	            {Geometric structure providing a prescription on how to measure the area of 2-dimensional surface elements embedded in the manifold.};
-		}	
+	           }	
+			}
 		\end{column}
 	\end{columns}
 
 	\begin{tikzpicture}[overlay]
-        \path[->,draw=orange!40]<3-> (s1) edge [bend right] (t1);
-        \path[->,draw=blue!40]<4-> (s2) edge [bend left] (t2);
-        \path[->,draw=green!40]<2-> (s3) edge [bend left] (t3);
-        \path[->,draw=red!40] (s4) edge [bend right] (t4);
+        \path[->,draw=orange!40]<4-> (s1) edge [bend right] (t1);
+        \path[->,draw=blue!40]<5-> (s2) edge [bend left] (t2);
+        \path[->,draw=green!40]<3-> (s3) edge [bend left] (t3);
+        \path[->,draw=red!40]<2-> (s4) edge [bend right] (t4);
 	\end{tikzpicture}
 
 	\vfill
-	\onslide<5->{
+	\onslide<1->{
 	\begin{block}{Based on:}
 		 \emph{ \small
 			 Blacker, M, Ryvkin;
@@ -167,7 +169,7 @@
 		\end{exblock}
 		%
 		\pause
-		\vspace{1em}
+		\vspace{1.2em}
 		\centering
 		\textit{ based on the notion of \\"states".}		
 	\end{column}
@@ -181,13 +183,15 @@
 			Unital, associative, commutative algebra $C^\infty(M)$.
 		\end{defblock}
 		%
-		\vspace{.5em}
+		\vspace{.1em}
 		\pause
 		\begin{defblock}[Hamiltonian vector fields]
 			$\vHam_f \in \mathfrak{X}(M)$ such that:
-			$$\iota_{\vHam_f} \omega = -df \quad \text{(exact)}$$ %$\in B^1(M)$
-			\small$\vHam_f$ = \emph{Ham.v.f. pertaining to $f\in C^\infty(M)$}.
+			$$\iota_{\vHam_f} \omega = -df \quad$$ %$\in B^1(M)$
+			%
+			\footnotetext{	$\vHam_f$ = \emph{Ham.v.f. pertaining to $f\in C^\infty(M)$}.}
 		\end{defblock}
+		\vspace{.1em}
 		%
 		\begin{defblock}[Poisson Algebra of Observables]
 			$C^\infty(M)$ is a Poisson algebra with
@@ -195,7 +199,7 @@
 		\end{defblock}
 		%
 		\pause
-		\vspace{.8em}
+		\vspace{.15em}
 		\centering
 		\textit{ based on the notion of \\"measurable quantities".}						
 	\end{column}

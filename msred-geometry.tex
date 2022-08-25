@@ -381,9 +381,9 @@
 	\\
 	You can also say that $\sigma$ is a $(j,n-j)$-unshuffle if $\sigma(i)< \sigma(i+1)$ when $i\neq j$.
 
-	\item 	Alternatively, the Jacobiators can be also denoted as $$\displaystyle J_m=\sum_{i+j=m+1} 	\mu_i \circ \mu_j = 0$$
+	\item 	Alternatively, the Jacobiators can be also denoted as $$\displaystyle J_m=\sum_{i+j=m+1} 	\mu_i \triangleleft \mu_j = 0$$
 	employing the so-called \emph{ Richardson-Nijenhuis product}
-		 $$\mu_i\circ \mu_j := (-)^{i(j+1)}\frac{1}{j!(i-1)!}\mu_i\circ\mu_j\otimes \mathbb{1}_{i-1} \circ \mathcal{A}~,$$
+		 $$\mu_i\circ \mu_j := (-)^{i(j+1)}\frac{1}{j!(i-1)!}\mu_i \triangleleft \mu_j\otimes \mathbb{1}_{i-1} \circ \mathcal{A}~,$$
 		 where $\mathcal{A}$ denotes the (graded) total skew-symmetrizator.
 		 
 	\item see frame extra-\ref{Frame:unwapping-Jacobi} for a slightly demystification of the higher Jacobi equations.
@@ -414,11 +414,13 @@
 	%
 	\begin{propblock}
 		\begin{itemize}
+			\setlength\itemsep{1em}
 			\item[i.] $\vHam_{\llbracket \alpha, \beta \rrbracket} = [\vHam_\alpha,\vHam_\beta]$
-			\item[ii.] $\llbracket \sigma, \llbracket \alpha, \beta \rrbracket \rrbracket = 
+			\item[ii.] $\llbracket \sigma, \llbracket \alpha, \beta \rrbracket \rrbracket =
 			\llbracket\llbracket \sigma, \alpha \rrbracket, \beta \rrbracket
 			+
 			\llbracket \alpha, \llbracket \sigma, \beta \rrbracket \rrbracket$
+			\item[iii.] $\llbracket \alpha, \beta \rrbracket + \llbracket \beta,\alpha \rrbracket = d \left( \iota_{\vHam_\alpha} \beta + \iota_{\vHam_\beta} \alpha\right)$
 		\end{itemize}
 	\end{propblock}
 
