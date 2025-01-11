@@ -1,135 +1,134 @@
 %+----------------------------------------------------------------------------+
-%| Style file: Style macros and packages 
+%| Style file: Custom macros and packages
 %+----------------------------------------------------------------------------+
 
-
 \NeedsTeXFormat{LaTeX2e}[2009/09/24]
-\ProvidesPackage{custom-style}[11/13/2019 Custom Package]
+\ProvidesPackage{custom-style}[2019/11/13 Custom Package]
 
-
-
-
-
+%------------------------------------------------------------------------------
+% Formatting adjustments
+%------------------------------------------------------------------------------
 \makeatletter
 \g@addto@macro\normalsize{%
-    \setlength\belowdisplayskip{-0pt}
+    \setlength\belowdisplayskip{0pt}% Adjust spacing below displays
+}
+\makeatother
+
+%------------------------------------------------------------------------------
+% Section behavior
+%------------------------------------------------------------------------------
+\AtBeginSubsection[]{% Actions to perform at the beginning of each subsection
 }
 
+%------------------------------------------------------------------------------
+% Required packages
+%------------------------------------------------------------------------------
+\RequirePackage{verbatim} % For verbatim text environments
+\RequirePackage{appendixnumberbeamer} % Manage appendix numbering in Beamer
+\RequirePackage{amsmath, amssymb} % Essential math packages
+\RequirePackage{tikz} % Create graphics programmatically
+\usetikzlibrary{decorations.pathmorphing, arrows, shapes, calc} % TikZ libraries for advanced graphics
+\RequirePackage{tikz-cd} % Commutative diagrams in TikZ
+\RequirePackage{graphicx, animate} % Include graphics and animations
+\RequirePackage{hyperref} % Hyperlinks
+\RequirePackage[english]{babel} % Language-specific features
+\RequirePackage{csquotes} % Context-sensitive quotes
+\RequirePackage{wasysym} % Additional symbols
+%\usepackage{enumitem} % Uncomment for enhanced itemization
+\RequirePackage{xcolor} % Color management
+\RequirePackage{pifont} % Additional dingbats
+\RequirePackage{empheq} % Emphasized equations
+\RequirePackage[font=scriptsize]{caption} % Customize captions
+\RequirePackage{cancel} % Strike through math expressions
+\RequirePackage{stackengine} % Stacking elements in text
+
+% Math font settings
+\RequirePackage[cal=boondox,scr=boondoxo]{mathalfa} % Customize script and calligraphic fonts
+% Use \mathscr for Hamiltonian vector fields to avoid confusion with infinitesimal actions
+
+\RequirePackage{stmaryrd} % Additional symbols
+\RequirePackage{fontawesome} % Icons
+\RequirePackage[export]{adjustbox} % Adjust image boxes
+\RequirePackage{textpos, eso-pic} % Text positioning and overlays
+
+%------------------------------------------------------------------------------
+% Custom commands
+%------------------------------------------------------------------------------
+\providecommand{\cmark}{\textcolor{green}{\ding{51}}} % Checkmark symbol
+\providecommand{\xmark}{\textcolor{red}{\ding{55}}} % Crossmark symbol
+\providecommand{\smark}{\textcolor{orange}{\ding{43}}} % Star mark symbol
+
+%------------------------------------------------------------------------------
+% Standalone mode support
+%------------------------------------------------------------------------------
+    \RequirePackage[mode=buildnew,subpreambles=true]{standalone} % Manage standalone files
+    \providecommand{\includestandalonewithpath}[3][]{% Include standalone with relative path
+        \begingroup
+        \newcommand{\datapath}{#2}%
+        \includestandalone[#1]{\datapath/#3}%
+        \endgroup
+    }
 
 
-
-
-
-\AtBeginSubsection[]{}
-
-
-%%- Packages ----------------------------------------------------------------------------------------------
-\RequirePackage{verbatim}
-\RequirePackage{appendixnumberbeamer}
-\RequirePackage{amsmath, amssymb}
-\RequirePackage{tikz}
-\usetikzlibrary{decorations.pathmorphing}
-\usetikzlibrary{arrows,shapes,calc}
-\RequirePackage{tikz-cd}
-\RequirePackage{graphicx, animate}
-\RequirePackage{hyperref}
-\RequirePackage[english]{babel}
-\RequirePackage{csquotes}
-\RequirePackage{wasysym}
-%\usepackage{enumitem} %option in itemize
-\RequirePackage{xcolor}
-\RequirePackage{pifont}
-\RequirePackage{empheq}
-\RequirePackage[font=scriptsize]{caption}
-\RequirePackage{cancel}
-\RequirePackage{stackengine}
-
-\RequirePackage[cal=boondox,scr=boondoxo]{mathalfa}
-% use mathscr for the v denoting hamiltonian vector fields. Avoid confusion with the infinitesimal action v!
-
-\RequirePackage{stmaryrd}
-\RequirePackage{fontawesome}
-
-
-\RequirePackage[export]{adjustbox}
-\RequirePackage[mode=buildnew,subpreambles=true]{standalone}
-\RequirePackage{textpos,eso-pic}
-
-
-%- Macros - Command --------------------------------------------------------------------------------------------------------------
-\providecommand{\cmark}{\textcolor{green}{\ding{51}}}%
-\providecommand{\xmark}{\textcolor{red}{\ding{55}}}%
-\providecommand{\smark}{\textcolor{orange}{\ding{43}}}%
-
-
-
-%- WorkAround --------------------------------------------------------------------------------------------------------------
-%Standalone with relative path
-\newcommand{\includestandalonewithpath}[3][]
-{
-  \begingroup
-  \newcommand{\datapath}{#2}
-  \includestandalone[#1]{\datapath/#3}
-  \endgroup
-}
-
-
-
-
-%- HandOut Flag -----------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------
+% Handout flag
+%------------------------------------------------------------------------------
 \makeatletter
 \@ifundefined{ifHandout}{%
-  \expandafter\newif\csname ifHandout\endcsname
+    \expandafter\newif\csname ifHandout\endcsname
 }{}
 \makeatother
 
+%------------------------------------------------------------------------------
+% Content-related macros
+%------------------------------------------------------------------------------
+\setcounter{tocdepth}{2} % Table of contents depth
 
-
-%- Contents macros -----------------------------------------------------------------------------------
-\setcounter{tocdepth}{2}
-%Intermediate checkpoint slide
-\newcommand{\checkpoint}[0]{
-	\ifHandout
- 	\begin{frame}{Outline}
-  		%\tableofcontents[currentsection,currentsubsection]
-  		\tableofcontents[currentsection]
-	\end{frame}
-	\note{}
-	\else
-	\setcounter{tocdepth}{2}
-	\addtocounter{framenumber}{-1}
- 	\begin{frame}{Outline}
-  		%\tableofcontents[currentsection,currentsubsection]
-  		\tableofcontents[currentsection]
-	\end{frame}
-	\note{}
-	\fi
+% Intermediate checkpoint slide
+\newcommand{\checkpoint}[0]{%
+    \ifHandout
+        \begin{frame}{Outline}
+            \tableofcontents[currentsection]%
+        \end{frame}
+        \note{}
+    \else
+        \setcounter{tocdepth}{2}
+        \addtocounter{framenumber}{-1}
+        \begin{frame}{Outline}
+            \tableofcontents[currentsection]%
+        \end{frame}
+        \note{}
+    \fi
 }
-\newcommand{\subcheckpoint}[0]{
-	\ifHandout
 
-	\else
-	\setcounter{tocdepth}{2}
-	\addtocounter{framenumber}{-1}
- 	\begin{frame}[t]{Outline}
-  		\tableofcontents[currentsection,currentsubsection]
-  		%\tableofcontents[currentsubsection]
-  		\vfill
-  		\hfill\hyperlink{frame:thankyouslide}{\color{gray}$[>>]$}%\beamerskipbutton{}}
-	\end{frame}
-	\note{}	
-	\fi
+% Subsection checkpoint
+\newcommand{\subcheckpoint}[0]{%
+    \ifHandout
+        % Do nothing in handout mode
+    \else
+        \setcounter{tocdepth}{2}
+        \addtocounter{framenumber}{-1}
+        \begin{frame}[t]{Outline}
+            \tableofcontents[currentsection,currentsubsection]%
+            \vfill
+            \hfill\hyperlink{frame:thankyouslide}{\color{gray}$[>>]$}%
+        \end{frame}
+        \note{}
+    \fi
 }
-%
-\newcommand{\outline}[0]{
-	\ifHandout
 
-	\else
-	\addtocounter{framenumber}{-1}
- 	\begin{frame}{Outline}
-  		%\tableofcontents[currentsection,currentsubsection]
-  		\tableofcontents
-	\end{frame}
-	\note{}	
-	\fi
+% Full outline
+\newcommand{\outline}[0]{%
+    \ifHandout
+        % Do nothing in handout mode
+    \else
+        \addtocounter{framenumber}{-1}
+        \begin{frame}{Outline}
+            \tableofcontents
+        \end{frame}
+        \note{}
+    \fi
 }
+
+
+
