@@ -1,5 +1,5 @@
 %+----------------------------------------------------------------------------+
-%| SLIDES: Constraint Algebras of multisymplectic Observables
+%| SLIDES: Constraint Algebras of multisymplectic Observables (Follow-up talk)
 %| Contents:	- 25 minutes (extimated duration ~2 minutes per slide, ~12 slides )
 %|
 %| Author: Antonio miti
@@ -44,6 +44,19 @@
 \newcommand{\vanvf}{I_{\mathfrak{X}}(N)}%{I_N^{\mathfrak X}}
 \newcommand{\Ham}{\mathsf{Ham}}
 \renewcommand{\ham}{\text{ham}}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+
+%\usepackage{quiver}
+\usetikzlibrary{nfold}
+\usetikzlibrary{decorations.pathmorphing} 
+\newcommand{\aaar}{\substack{\longrightarrow\\[-0.85em] \longrightarrow \\[-0.85em] \longrightarrow}}
+%\newcommand{\Ham}{\mathrm{Ham}}
+\newcommand{\Der}{\mathrm{Der}}
 
 %--Beamer Style-----------------------------------------------------------------------------------------------
 \usetheme{toninus}
@@ -539,7 +552,6 @@ This talk is based on ongoing joint work with Casey Blacker and Leonid Ryvkin.
 
 		\path[right hook->,blue] (A) edge node[above] {$i$} (B);
 		\path[orange,->] (A) edge node[left] {$\pi$} (C);
-
 		\begin{scope}[xshift=-1.8cm]
 			\node[blue] at (0,0) {\small restrict to $\{\mu=\phi\}$};
 			\node[orange] at (.15,-.4) {\small quotient by $G_\phi$};
@@ -841,7 +853,8 @@ manifold to any classical field system (e.g. a continuous medium like a filament
  }
 %------------------------------------------------------------------------------------------------
 
-
+%------------------------------------------------------------------------------------------------
+\end{document}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Multisymplectic observables reduction}
@@ -1463,7 +1476,11 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 %------------------------------------------------------------------------------------------------
 
 
+%------------------------------------------------------------------------------------------------
+\end{document}
+
 \section{LEOS}
+% TEMP! All credit to Leonid Ryvkin www.ryvkin.eu
 
 
 \section{Motivation: Symplectic reductions}
@@ -1472,7 +1489,7 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 
 \begin{block}{Def. Symplectic manifold $(M,\omega)$}
 	$M$ a smooth manifold, $\omega\in \Omega^{2}(M)$ closed and non-degenerate, i.e.:
-\begin{itemize}[label=\itemAard]	
+\begin{itemize} 	
 	\item $d\omega=0$
 	\item $\omega^\flat:TM\to T^*M, v\mapsto \iota_v\omega$ is injective
 \end{itemize}	
@@ -1480,23 +1497,24 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 
 
 Examples:\pause
-\begin{itemize}[label=\itemAard]
+\begin{itemize}
 	\item orientable 2-manifolds with volume, e.g. $S^2$, $T^2$, $\mathbb R^2$\pause
 	\item cotangent bunlde $T^*Q$ of any manifold $Q$, with $\omega=d\theta$. $\theta_\eta(v)=\eta(T\pi_Q(v))$.\pause
 	\item coadjoint orbits
 \end{itemize}
+
 \end{frame}
 
 
 \begin{frame}
 	\begin{block}{Def. Poisson algebra of observables} Let $(M,\omega)$ be symplectic.
-		\begin{itemize}[label=\itemAard]
+		\begin{itemize}
 			\item $X_f:=-(\omega^\flat)^{-1}(df)$  \emph{Hamiltonian vector field} of $f\in C^\infty(M)$.
 			\item $\{f,g\}:=\omega(X_f,X_g)=L_{X_f}g$ \emph{Poisson bracket of observables}
 		\end{itemize}
 	\end{block}\pause
 	Indeed $(C^{\infty}(M), \cdot, \{-,-\})$ Poisson algebra:
-			\begin{itemize}[label=\itemCapy]
+			\begin{itemize}
 		\item $\cdot$ is a commutative, associative mutliplication
 		\item $\{-,-\}$ is a Lie bracket
 		\item $\{f,- \}$ is a derivation
@@ -1508,7 +1526,7 @@ Examples:\pause
 \subsection{Marsden-Weinstein-Meyer reduction}
 \begin{frame}[fragile]{Marsden-Weinstein-Meyer reduction}
 Let $(M,\omega)$ symplectic, $G\circlearrowright M$ be a Lie group action\pause and $\mu:M\to \mathfrak g^*$ such that:\pause
-\begin{itemize}[label*=\itemCapy]
+\begin{itemize}
 \item  $\mu$ is a momentum, i.e. the infinitesimal action $\xi\mapsto \underline\xi:\mathfrak g\to \mathfrak X(M)$ of $G$ satisfies $X_{\langle\mu,\xi\rangle}=\underline \xi$. \pause
 \item $\mu$ is $G$-equivariant, i.e. $\mu(gm)=Ad^*_g\mu(m)$ \pause
 \item The action of $G$ on $\mu^{-1}(0)$ is free and proper.\\ (This implies $0$ is reg. val. of $\mu$) \pause
@@ -1614,13 +1632,13 @@ with $Q=\{f\in J|~\{f,P\}\subset J\}$
 \begin{frame}
 \begin{block}{Def. Multisymplectic manifold $(M,\omega)$}
 	$M$ a smooth manifold, $\omega\in \Omega^{n+1}(M)$ closed and non-deg., i.e.:
-	\begin{itemize}[label=\itemAard]	
+	\begin{itemize}
 		\item $d\omega=0$
 		\item $\omega^\flat:TM\to \Lambda^nT^*M, v\mapsto \iota_v\omega$ is injective
 	\end{itemize}	\pause
 \end{block}
 Without the non-deg. condition we call it \emph{premultisymplectic}.	\pause
-\begin{itemize}[label=\itemAard]
+\begin{itemize} 
 	\item orientable $n{+}1$-manifolds with volume, e.g. $S^{n+1}$, $T^{n+1}$, $\mathbb R^{n+1}$\pause
 	\item multicotangent bunlde $\Lambda^nT^*Q$ of any manifold $Q$, with $\omega=d\theta$. $\theta_\eta(v_1,...,v_n)=\eta(T\pi_Q(v_n),...,T\pi_Q(v_n))$.\pause
 	\item semisimple Lie groups, hyperKähler manifolds,...
@@ -1682,13 +1700,13 @@ Without the non-deg. condition we call it \emph{premultisymplectic}.	\pause
 
 \begin{frame}
 	$C^\infty(\mathbb R^3)\oplus \mathfrak X(\mathbb R^3)=:L_{-1}\oplus L_0$ form a \underline{\bf $L_\infty$ algebra} with:
-	\begin{itemize}[label=\itemAard]	
+	\begin{itemize} 	
 		\item $l_1:L_{-1}\to L_0$, $l_1(f)=grad(f)$
 		\item $l_2:L_{0}\times L_0\to L_0$, $l_2(X,Y)=\{X,Y\}$
 		\item $l_3:L_{0}\times L_0\times L_0\to L_{-1}$, $l_3(X,Y,Z)=-(rot(X)\times rot(Y))\cdot rot(Z)$ 
 	\end{itemize}~\\~\\ \pause
 	In our case it means the following identities are satisfied:
-	\begin{itemize}[label=\itemAard]	
+	\begin{itemize} 	
 		\item $l_2(l_1(f),Y)=0$
 		\item $l_2(l_2(X,Y),Z) - cycl= l_1l_3(X,Y,Z)$
 		\item $l_3(l_2(X,Y),Z,W)-cycl=0$
@@ -1701,7 +1719,7 @@ Without the non-deg. condition we call it \emph{premultisymplectic}.	\pause
 \begin{frame}[fragile]
 	\begin{block}{Def. Observable $L_\infty$ algebra [Rogers2012]}
 		Let $(M,\omega)$ pre-multisymplectic. Set:
-			\begin{itemize}[label=\itemAard]	
+			\begin{itemize} 	
 			\item $\Ham^0(M,\omega)=\{(\alpha,v)\in \Omega^{n-1}(M)\times \mathfrak X(M)~|~d\alpha=-\iota_v\omega  \}$
 			\item $\Ham^{-i}(M,\omega)= \Omega^{n-1-i}(M)$, $1\leq i\leq n-1$.
 			\item  $l_1=d:\Ham^{-i}(M,\omega)\to \Ham^{-i+1}(M,\omega)$,\\ (resp. $(d,0)$ for $i=1$)
@@ -1743,7 +1761,7 @@ $ for all $m$ and all possible $x_i$, where $l_0:=0$ and $l_{m+2}:=0$.
  The above also works if we replace $(C^\infty(M),\mathfrak X(M))$ with any Lie-Rinehart algebra $(A, L)$ and $\omega$ with a cocycle in $(\Lambda^{n+1}_AL)^*$.
 \end{block}\pause
 A Lie Rinehart algebra is: 
-\begin{itemize}[label=\itemAard]
+\begin{itemize} 
 	\item A commutative algebra $A$ and an A-module $L$
 	\item A Lie algebra structure on $L$
 	\item A Lie algebra and module homomorphism $\rho:L\to \Der(A)$
@@ -1802,7 +1820,7 @@ It is a (strong) constraint algebra,\\ i.e. $\mathcal A_0\subset \mathcal A_N\su
 
 \begin{frame}{Derivations of constraint algebras}
 	$\mathcal A=(\mathcal A_T,\mathcal A_N,\mathcal A_0)=(C^\infty(M),C^\infty(M), I_S)$\\~
-\begin{itemize}[label=\itemAard]
+\begin{itemize} 
 	\item $\Der(\mathcal A)_T:=\Der(\mathcal A)_T$ corresponds to all vector fields\pause
 	\item  $\Der(\mathcal A)_N:=\{v\in \Der(\mathcal A)~|~v(\mathcal A_N)\subset \mathcal A_N, ~v(\mathcal A_0)\subset \mathcal A_0\}$\\
 	corresponds to vector fields ({\color{red}algebraically}) tangent to $S$.\\ \pause
@@ -1822,7 +1840,7 @@ It is a (strong) constraint algebra,\\ i.e. $\mathcal A_0\subset \mathcal A_N\su
 	$\Der(\mathcal A)=(\mathfrak X(M),~~\{v| v(I_S)\subset I_S\},~~ I_S\mathfrak X(M))$
 		\begin{block}{Lemma: $\mathfrak L:=\Der(\mathcal A)$ is a constraint Lie-Rinehart algebra over $\mathcal A$}
 			This means 
-	\begin{itemize}[label=\itemAard]
+	\begin{itemize} 
 		\item $\mathfrak L_T$ is a Lie Rinehart algebra over $\mathcal A_T$.
 		\item $\mathfrak L$ is a strong constraint module over $\mathcal A$, i.e.\\ $\mathcal A_N\mathfrak L_N\subset \mathfrak L_N$ and $\mathcal A_0\mathfrak L_T+\mathcal A_T\mathfrak L_0\subset \mathfrak L_0$.
 		\item $[\mathfrak L_N,\mathfrak L_N]\subset \mathfrak L_N$ and  $[\mathfrak L_N,\mathfrak L_0]\subset \mathfrak L_0$
@@ -1831,7 +1849,7 @@ It is a (strong) constraint algebra,\\ i.e. $\mathcal A_0\subset \mathcal A_N\su
 \end{block}\pause
 
 \begin{exampleblock}{Corollary: $(\Lambda \mathfrak L)^*$ has a constraint Cartan calculus $d, \iota, L$}
-	\begin{itemize}[label=\itemAard]
+	\begin{itemize} 
 	\item $(\Lambda^k \mathfrak L)^*_T=\Omega^k(M)$
 	\item $(\Lambda^k \mathfrak L)^*_N=\{\alpha~|~\alpha(v_1,...,v_k)\in \mathcal A_N~\forall v_i\in \mathfrak L_N , $ \\ ~~~~~~~~~~~~~~~~~~~~$ \alpha(v_1,...,v_{k-1},w)\in \mathcal A_0~\forall v_i\in \mathfrak L_N , w\in \mathfrak L_0 \}$
 	\item $(\Lambda^k \mathfrak L)^*_0=\{\alpha~|~\alpha(v_1,...,v_k)\in \mathcal A_0~\forall v_i\in \mathfrak L_N\}$
@@ -1845,7 +1863,7 @@ It is a (strong) constraint algebra,\\ i.e. $\mathcal A_0\subset \mathcal A_N\su
 \subsection{Introducing symmetry}
 \begin{frame}
 Let $F\subset \Der(\mathcal A)_N$ a Lie subalgebra  (typically $F=\underline{\mathfrak g}$). Consider:
-\begin{itemize}[label=\itemAard]
+\begin{itemize} 
 	\item the constraint algebra $\mathcal B= (C^\infty(M),~~~~ \{f~|~F(f)\subset I_S\},~~~ I_S)$\pause
 	\item the constraint Lie-Rinehart algebra $\mathcal L$  \[ (\mathfrak X(M),~~~~\{v ~|~ [v,F]\subset C^\infty(M)F+I_S\mathfrak X(M)\}, ~~~~ C^\infty(M)F+I_S\mathfrak X(M) )\]
 	\item \pause the constaint differential forms 
@@ -1929,7 +1947,7 @@ There is a natural injection $R:\frac{\Ham(M,\omega)_N}{\Ham(M,\omega)_0}\hookri
 \end{block}
 \pause 
 \begin{exampleblock}{Non-surjectivity in general}
-	\begin{itemize}[label=\itemCapy]
+	\begin{itemize} 
 	\item 	$M=\mathbb R^5$, $\omega=dt\wedge (dx_1\wedge dy_1+dx_2\wedge dy_2)$\pause 
 	\item $\mathfrak g=\langle\xi\rangle, \underline{\xi}=\partial_{x_1}$, $\mu(\xi)=-y_1dt$\pause 
 	\item $S=\{y_1=0\}$, $M_r\cong \mathbb R^3$ with $t,x_2,y_2$ and $\omega_r=dt\wedge dx_2\wedge dy_2$\pause 
@@ -1944,7 +1962,7 @@ There is a natural injection $R:\frac{\Ham(M,\omega)_N}{\Ham(M,\omega)_0}\hookri
 
 \subsection{Lessons learned}
 \begin{frame}{Lessons learned}
-	\begin{itemize}[label=\itemAard]
+	\begin{itemize} 
 \item Constraint triples permit to do differential geometry/ Cartan calculus on singular subquotients,\\ ... in particular constructing observable algebras on them.\pause
 \item Even if $\omega$ is non-degenerate, $\omega_r$ could degenerate, forcing us to pull along the Hamiltonian vector fields explicitly\pause
 \item Coomentum maps in the sense of the Leibniz structure seem better for reducing than $L_\infty$-comomenta \pause
